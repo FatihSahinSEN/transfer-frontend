@@ -1,5 +1,5 @@
 <template>
-  <div class="arka" v-if="CheckRole('ReservationList')">
+  <div class="arka" v-if="CheckRole('ReservationList')" :style="ArkaPlan">
     <div class="q-pa-md row items-start q-gutter-md">
       <div class="text-h6 fit">Rezervasyonlar
           <q-icon name="fact_check" class="text-primary" style="font-size: 2em;">
@@ -195,6 +195,7 @@
     components: {ReservationGrid, "reservation-detail": ReservationDetail,TableFooter, TableHeaderSearch,TableGrid},
     data() {
       return {
+        ArkaPlan:"background-image: url(/assets/upload/" +  this.$store.state.parameters.SYSTEM_BACKGROUND_PHOTO +");",
         oldData:null,
         priceFormat: new Intl.NumberFormat('tr-TR', {
           style: 'currency',
@@ -595,7 +596,7 @@
     },
     computed: {
       ...mapGetters(['getReservationList']),
-      ...mapState(['filter','grid']),
+      ...mapState(['filter','grid','parameters']),
       rezervasyons: {
         get() {
           return this.$store.state.reservationList
@@ -663,7 +664,6 @@
 <style>
   .arka {
     min-height: calc(100vh - 34px);
-    background-image: url(/assets/rez-bg.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: bottom center;

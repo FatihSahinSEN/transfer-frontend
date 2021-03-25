@@ -33,7 +33,7 @@
         <td>
           <b>Phone :</b>
         </td>
-        <td>{{ veri.passengers[0].phone }}</td>
+          <td>{{ veri.passengers[0].phone }}</td>
       </tr>
       <tr>
         <td><b>Booking Date	:</b></td>
@@ -104,23 +104,10 @@
       </tr>
     </table>
 
-    <div class="info">
-      <p>
-        Dear <b>{{ veri.passengers[0].firstname }} {{ veri.passengers[0].lastname }}</b>,<br />
-        Thank you very much for booking your airport transfer with us.<br /><br />
-
-        Your airport transfer is now <b  v-if="veri.transfer_status==4 || veri.transfer_status==5" style="color: red">CALCELED</b> <b v-else>CONFIRMED</b>, please check the summary above carefully to ensure it is correct .</p>
-
-        <p>Our contact / WhatsApp number is <a href="tel:+905375046504">+90 537 504 65 04</a> I'm available <b>24/7</b> to help you. Please save this number for your future reservations and contact.<p>
-        <p>Please click for <a href="#" target="_blank">ISTANBUL AIRPORT</a> / <a href="#" target="_blank">SABIHA GOKCEN AIRPORT</a> meeting instructions.<p>
-        <p>Pick up times are estimated so a day before from your departure please confirm your exact pick up time.</p>
-
-
-      <p>We wish you a fantastic journey.</p>
-
+    <div class="info" >
+      <p v-html="htmlData"></p>
       <div class="kase notranslation">
-        GOBYVIP<BR />
-        KAŞE
+        <img :src="KaseIMG" />
       </div>
     </div>
 
@@ -130,12 +117,15 @@
 </template>
 
 <script>
+  import {mapState} from "vuex";
     export default {
         name: "VoucherPages",
       data() {
           return {
             veri:[],
-            showData:true
+            showData:true,
+            htmlData:"",
+            KaseIMG:"/assets/upload/" + this.parameters.SYSTEM_KASE
           }
       },
       methods: {
@@ -148,6 +138,9 @@
                       this.showData=true
                       this.$q.loading.hide()
                       this.veri=result.data.return[0]
+                      this.htmlData=this.parameters.SYSTEM_VOUCHER_TEXT;
+                      this.htmlData=this.htmlData.replace("YOLCU_ADI", this.veri.passengers[0].firstname)
+                      this.htmlData=this.htmlData.replace("YOLCU_SOYADI", this.veri.passengers[0].lastname)
                     })
                     .catch((err) => {
                       this.$q.loading.hide()
@@ -158,10 +151,15 @@
                 this.$q.loading.hide()
                 this.showData=false
             }
-          }
+          },
       },
       mounted() {
-          this.getDataAPI()
+        this.getParameters()
+        this.getDataAPI()
+      },
+
+      computed: {
+        ...mapState(["parameters"]),
       }
     }
 </script>

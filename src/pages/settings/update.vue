@@ -54,6 +54,138 @@
       <q-input outlined dense bottom-slots fill-mask lazy-rules type="number" min="1" max="55555" color="orange-14" v-model="value"
                v-else-if='type=="input-number"'
       />
+
+      <q-input outlined dense bottom-slots fill-mask lazy-rules type="text" mask="90##########" color="orange-14" v-model="value"
+               v-else-if='type=="input-phone"'
+      />
+      <q-editor
+        v-model="value"
+        min-height="10rem"
+        autofocus
+        ref="editor"
+        @keyup.enter.stop
+        style="margin-bottom: 15px;"
+        v-else-if='type=="textarea-html"'
+        :toolbar="[
+        ['editorData'],
+        [
+          {
+            label: $q.lang.editor.align,
+            icon: $q.iconSet.editor.align,
+            fixedLabel: true,
+            options: ['left', 'center', 'right', 'justify']
+          }
+        ],
+        ['bold', 'italic', 'strike', 'underline', 'subscript', 'superscript'],
+        ['token', 'hr', 'link', 'custom_btn'],
+        ['print', 'fullscreen'],
+        [
+          {
+            label: $q.lang.editor.formatting,
+            icon: $q.iconSet.editor.formatting,
+            list: 'no-icons',
+            options: [
+              'p',
+              'h1',
+              'h2',
+              'h3',
+              'h4',
+              'h5',
+              'h6',
+              'code'
+            ]
+          },
+          {
+            label: $q.lang.editor.fontSize,
+            icon: $q.iconSet.editor.fontSize,
+            fixedLabel: true,
+            fixedIcon: true,
+            list: 'no-icons',
+            options: [
+              'size-1',
+              'size-2',
+              'size-3',
+              'size-4',
+              'size-5',
+              'size-6',
+              'size-7'
+            ]
+          },
+          {
+            label: $q.lang.editor.defaultFont,
+            icon: $q.iconSet.editor.font,
+            fixedIcon: true,
+            list: 'no-icons',
+            options: [
+              'default_font',
+              'arial',
+              'arial_black',
+              'comic_sans',
+              'courier_new',
+              'impact',
+              'lucida_grande',
+              'times_new_roman',
+              'verdana'
+            ]
+          },
+          'removeFormat'
+        ],
+        ['quote', 'unordered', 'ordered', 'outdent', 'indent'],
+
+        ['undo', 'redo'],
+        ['viewsource']
+      ]"
+        :fonts="{
+        arial: 'Arial',
+        arial_black: 'Arial Black',
+        comic_sans: 'Comic Sans MS',
+        courier_new: 'Courier New',
+        impact: 'Impact',
+        lucida_grande: 'Lucida Grande',
+        times_new_roman: 'Times New Roman',
+        verdana: 'Verdana'
+      }"
+      >
+        <template v-slot:editorData>
+          <q-btn-dropdown
+            dense no-caps
+            ref="token"
+            no-wrap
+            unelevated
+            color="white"
+            text-color="black"
+            label="DATA"
+            icon="data_saver_on"
+            size="sm"
+          >
+            <q-list dense>
+              <q-item tag="label" clickable @click="add('YOLCU_ADI')">
+                <q-item-section side>
+                  <q-icon name="person" />
+                </q-item-section>
+                <q-item-section>Yolcu Adı</q-item-section>
+              </q-item>
+              <q-item tag="label" clickable @click="add('YOLCU_SOYADI')">
+                <q-item-section side>
+                  <q-icon name="person" />
+                </q-item-section>
+                <q-item-section>Yolcu Soyadı</q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </template>
+      </q-editor>
+      <div  v-else-if='type=="input-file"'>
+      <q-uploader
+        :url="uploadURI"
+        style="margin-bottom:15px;"
+        accept=".jpg, image/*"
+        auto-upload
+        field-name="file"
+        @uploaded="changeUploadFile"
+      />
+      <q-input  outlined dense bottom-slots v-model="value" type="text" readonly />
+      </div>
       <div>
 
         <q-btn
@@ -91,6 +223,7 @@ export default {
       id: null,
       type:null,
       value:null,
+      uploadURI: process.env.API + "paramater/upload",
       columns: [
         { name: 'grup', data: "0", label: 'Parametre Grubu', icon: 'settings', type: 'text', readyonly: true ,tab: 1, autofocus: 'autofocus', rules: [val => val && val.length > 0 || 'Grup Alanı boş olamaz'] },
         { name: 'parameter', data: "1", label: 'Parametre', icon: 'settings', type: 'text',readyonly: true, tab: 2, rules: [val => val && val.length > 0 || 'Parametre alanı boş olamaz'] },
@@ -99,6 +232,18 @@ export default {
     }
   },
   methods: {
+    changeUploadFile(file){
+      // this.value="assets/upload/" + JSON.parse(file.xhr.response).result.file
+      var file=JSON.parse(file.xhr.response);
+      this.value=file.return.file
+    },
+    add (name) {
+      const edit = this.$refs.editor
+      this.$refs.token.hide()
+      edit.caret.restore()
+      edit.runCmd('insertHTML', `${name}`)
+      edit.focus()
+    },
     userSave () {
       let veri = this.columns
       var paramaters = {
@@ -161,3 +306,4 @@ export default {
   },
 }
 </script>
+

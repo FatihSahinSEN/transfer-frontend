@@ -46,7 +46,7 @@ export default async ({Vue}) => {
         }else {
           this.$axios.get("/paramaters")
             .then((res) => {
-              console.log(res.data);
+              // console.log(res.data);
               document.title = res.data.return.SYSTEM_TITLE;
               this.$store.commit("setParameters",res.data.return);
             })

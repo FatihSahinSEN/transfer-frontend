@@ -324,11 +324,11 @@
 ::selection {
   background:none;
 }
-input::selection {
+input::selection, .q-editor__content::selection, .q-editor__content *::selection  {
   background: #dd3933;
   color: #ffffff;
 }
-input::-moz-selection {
+input::-moz-selection,.q-editor__content::-moz-selection, .q-editor__content *::-moz-selection {
   background: #dd3933;
   color: #ffffff;
 }

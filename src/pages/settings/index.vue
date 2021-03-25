@@ -10,27 +10,51 @@
     </div>
     <q-separator inset />
     <div class="fit">
-      <table-header-search  />
+
+
+      <div class="row">
+        <div class="col" @click="selectOptions('GENERAL')">
+          <q-card class="my-card">
+            <q-card-section>
+              <q-icon name="language" class="iconcn" color="primary" />
+              <br />
+              <span style="font-size: 1.3em">Genel Sistem Ayarları</span>
+            </q-card-section>
+          </q-card>
+        </div>
+        <div class="col" @click="selectOptions('NOTIFICATION')">
+          <q-card class="my-card">
+            <q-card-section>
+              <q-icon name="circle_notifications" class="iconcn"  color="primary" />
+              <br />
+              <span style="font-size: 1.3em">Sistem Bildirim Ayarları</span>
+            </q-card-section>
+          </q-card>
+        </div>
+        <div class="col" @click="selectOptions('SMTP')">
+          <q-card class="my-card">
+            <q-card-section>
+              <q-icon name="mail" class="iconcn" color="primary" />
+              <br />
+              <span style="font-size: 1.3em">Eposta SMTP Ayarları</span>
+            </q-card-section>
+          </q-card>
+        </div>
+      </div>
       <q-table
         title=""
         dense
-        :data="data"
+        :data="selectData"
         :columns="columns"
         row-key="id"
-        :pagination.sync="pagination"
-        :filter="filter"
         :loading="loading"
-        no-data-label="Liste boş."
-        no-results-label="Arama sonucu bulunamadı.."
         @row-click="tdEdit"
-        :grid="grid"
-        :hide-header="grid"
+        no-data-label="Seçim yapınız.."
+        :pagination="pagens"
+        hide-header
+        v-if="selectData.length>0"
       >
-        <template v-slot:item="props" v-if="grid">
-          <table-grid :veri="props" :columns="columns" @edited="tdEdit('',props.row)" wdth="2" roles="UserUpdate"/>
-        </template>
         <template v-slot:bottom>
-          <table-footer sort-by="fullname" label="Kişi" :data="data.length"/>
         </template>
       </q-table>
 
@@ -53,18 +77,26 @@
       return {
         loading: false,
         row: null,
+        selectData:[],
         columns: [
-          { name: 'id', label: '#ID', field: 'id', align: 'left' },
-          { name: 'grup', label: 'GRUP KODU', field: 'grup', align: 'left' },
-          { name: 'parameter', label: 'Parametre Adı', field: 'parameter', align: 'left' },
-          { name: 'anahtar', label: 'Anahtar', field: 'anahtar', align: 'left' },
-          { name: 'value', label: 'Parametre Değeri', field: 'value', align: 'left' },
+          { name: 'parameter', label: 'Parametre', field: 'parameter', align: 'left' },
+          { name: 'value', label: 'Değer', field: 'value', align: 'left' },
         ],
+        pagens: {
+          sortBy: "id",
+          descending: false,
+          page: 1,
+          rowsPerPage: 0
+        },
         veri: [],
         data: []
       }
     },
     methods: {
+      selectOptions(val){
+        this.selectData = [];
+        this.selectData = this.data.filter((item) => item.grup == val)
+      },
       changeGrid(){
         this.grid=!this.grid
         window.localStorage.setItem('grid',this.grid)
@@ -138,3 +170,14 @@
     }
   }
 </script>
+<style scoped>
+  .my-card {
+    margin-right: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .iconcn {
+    font-size: 5em;
+    display: inline-block
+  }
+</style>
