@@ -1,6 +1,6 @@
 // more info on params: https://quasar.dev/quasar-cli/boot-files
 import JwtDecode from "vue-jwt-decode";
-
+import {colors} from "quasar";
 export default async ({Vue}) => {
   Vue.mixin({
     methods: {
@@ -48,7 +48,8 @@ export default async ({Vue}) => {
             .then((res) => {
               // console.log(res.data);
               document.title = res.data.return.SYSTEM_TITLE;
-              this.$store.commit("setParameters",res.data.return);
+              colors.setBrand('primary', res.data.return.SYSTEM_COLOR)
+              this.$store.commit("setParameters",res.data.return)
             })
             .catch((e) => {
               console.log(e);

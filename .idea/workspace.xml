@@ -22,16 +22,10 @@
     <list default="true" id="c3e54f39-f471-46a1-8ce4-29c42385c276" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.quasar/client-entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/.quasar/client-entry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/boot/mixins.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/boot/mixins.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/LoginLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/LoginLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/MainLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/reservation/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reservation/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/settings/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/settings/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/settings/update.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/settings/update.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/voucher/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/voucher/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,6 +178,7 @@
       <workItem from="1616012626166" duration="37000" />
       <workItem from="1616436429813" duration="5360000" />
       <workItem from="1616565911979" duration="823000" />
+      <workItem from="1616714904318" duration="6639000" />
     </task>
     <servers />
   </component>

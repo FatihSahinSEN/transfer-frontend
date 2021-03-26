@@ -10,8 +10,6 @@
     </div>
     <q-separator inset />
     <div class="fit">
-
-
       <div class="row">
         <div class="col" @click="selectOptions('GENERAL')">
           <q-card class="my-card">

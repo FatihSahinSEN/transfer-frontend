@@ -40,7 +40,6 @@
           {{user.hint}}
         </template>
       </q-input>
-
       <q-input outlined dense bottom-slots fill-mask lazy-rules color="orange-14" v-model="value"
           v-if='type=="input"'
       />
@@ -58,6 +57,11 @@
       <q-input outlined dense bottom-slots fill-mask lazy-rules type="text" mask="90##########" color="orange-14" v-model="value"
                v-else-if='type=="input-phone"'
       />
+      <div v-else-if='type=="color"'>
+        <q-btn label="SIFIRLA" @click="setDefaultColor" style="background-color: #133d67;width: 250px;color:#fff;margin-bottom: 25px"/>
+        <q-color v-model="value" style="width: 250px;margin-bottom: 25px" @change="setPrimaryColor" />
+      </div>
+
       <q-editor
         v-model="value"
         min-height="10rem"
@@ -186,6 +190,8 @@
       />
       <q-input  outlined dense bottom-slots v-model="value" type="text" readonly />
       </div>
+
+
       <div>
 
         <q-btn
@@ -214,7 +220,7 @@
 
 
 <script>
-
+  import { colors } from 'quasar'
 export default {
   name: 'SettingUpdate',
   data () {
@@ -232,6 +238,13 @@ export default {
     }
   },
   methods: {
+    setDefaultColor(){
+      this.value='#133d67';
+      this.setPrimaryColor()
+    },
+    setPrimaryColor(){
+      colors.setBrand('primary', this.value)
+    },
     changeUploadFile(file){
       // this.value="assets/upload/" + JSON.parse(file.xhr.response).result.file
       var file=JSON.parse(file.xhr.response);
@@ -286,6 +299,7 @@ export default {
     },
     setModels(){
       let params = this.$route.params;
+      console.log(params)
       this.id               =   params.id
       this.type             =   params.type
       this.columns[0].data  =   params.grup
