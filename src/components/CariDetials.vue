@@ -170,7 +170,7 @@
           >
             <template v-slot:body="props">
               <q-tr :props="props" :class="SetColor(props.row.cari_type,props.row.cari_status)" :key="props.row.index" v-if="ShowCariStatus(props.row.cari_status)" @click="EditCari('',props.row)">
-                <q-td key="cari_created" :props="props" style="width: 150px">{{ props.row.tarih }}</q-td>
+                <q-td key="cari_created" :props="props" style="width: 150px">{{ props.row.CurrentDate }}</q-td>
                 <q-td key="hesap_text" :props="props">{{ props.row.hesap_text }}</q-td>
                 <q-td key="aciklama" colspan="7" v-if="props.row.rez_id===null" style="text-align: center"><b>{{ props.row.aciklama }}</b></q-td>
                 <q-td key="transfer_type_text" :props="props" v-if="props.row.rez_id!==null">{{ props.row.transfer_type_text }}</q-td>
@@ -183,12 +183,28 @@
                 <q-td key="cari_tutar" :props="props">{{ props.row.cari_tutar }}</q-td>
               </q-tr>
             </template>
+            <template v-slot:top-row>
+              <q-tr>
+                <q-td colspan="1" style="text-align: right;font-size: 1.3em;font-weight: 700">BORÇ : </q-td>
+                <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
+                <q-td colspan="1" style="text-align: right;font-size: 1.3em;font-weight: 700">ALACAK : </q-td>
+                <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
+                <q-td colspan="5" style="text-align: right;font-size: 1.3em;font-weight: 700">DEVİR : </q-td>
+                <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
+
+              </q-tr>
+            </template>
             <template v-slot:bottom-row>
               <q-tr>
-                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Tarih :</q-td>
+<!--                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Tarih :</q-td>-->
+<!--                <q-td style="font-size: 1.3em;font-weight: 700" v-text="changeDateFormat(start_date)"></q-td>-->
+<!--                <q-td style="font-size: 1.3em;font-weight: 700" v-text="changeDateFormat(end_date)"></q-td>-->
+<!--                <q-td colspan="5"></q-td>-->
+                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Toplam Borç :</q-td>
                 <q-td style="font-size: 1.3em;font-weight: 700" v-text="changeDateFormat(start_date)"></q-td>
+                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Toplam Alacak</q-td>
                 <q-td style="font-size: 1.3em;font-weight: 700" v-text="changeDateFormat(end_date)"></q-td>
-                <q-td colspan="5"></q-td>
+                <q-td colspan="4"></q-td>
                 <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Toplam : </q-td>
                 <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
               </q-tr>
