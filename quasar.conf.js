@@ -41,19 +41,19 @@ module.exports = function (  ctx  ) {
       env: {
         TITLE: ctx.dev
             ? "Turizm Hosting - Transfer Yönetim Sistemi"
-            : "vipvantransfer - Transfer Yönetimi",
+            : "Go By VIP - Transfer Yönetimi",
         SHORT_NAME: ctx.dev
             ? "Turizm Hosting"
-            : "vipvantransfer",
+            : "GoByVIP",
         DESCRIPTION: ctx.dev
             ? "Turizm Hosting - Transfer Yönetim Sistemi"
-            : "vipvantransfer - Airport Shuttle & Transfer",
+            : "Go By VIP - Airport Transfer",
         DOMAIN: ctx.dev
               ? "https://fatih.dev"
-              : "https://www.vipvantransfer.com",
+              : "https://www.gobyvip.com",
         API: ctx.dev
           ? "https://fatih.dev/backend/v1/"
-          : "https://www.vipvantransfer.com/api/v1/",
+          : "https://www.gobyvip.com/api/v1/",
 
       },
       vueRouterMode: "history", // available values: 'hash', 'history'

@@ -212,28 +212,29 @@
           class="q-ml-sm"
         />
           <p>Lütfen Yolcu Bilgilerini Eksiksiz Doldurunuz...</p>
-          <q-card class="my-card" v-for="n in this.passengers.length" :key="n">
+        <div class="row">
+          <q-card class="column" style="margin-bottom: 20px;margin-right: 20px;" v-for="n in this.passengers.length" :key="n">
             <q-card-section>
               <div class="text-h6">YOLCU {{ n }}</div>
             </q-card-section>
 
             <q-separator />
 
-<q-card-actions vertical style="margin-bottom:10px;">
+          <q-card-actions vertical style="margin-bottom:10px;">
                 <q-select
                 filled
                 emit-value
                 use-input
+                dense
                 options-dense
                 v-model="passengers[n-1].country"
                 option-label="name"
                 label="Ülke seçiniz."
                 color="primary"
-                style="margin-bottom:20px"
-
                 @filter="countryFilter"
                 :rules="[v => v || 'Ülke Seçmediniz.']"
                 :options="countries"
+                style="max-width: 200px"
               >
               <template v-slot:no-option>
                 <q-item>
@@ -246,6 +247,7 @@
             <q-select
                 filled
                 emit-value
+                dense
                 v-model="passengers[n-1].gender"
                 option-label="name"
                 label="Cinsiyet"
@@ -309,6 +311,7 @@
             </q-card-actions>
           </q-card>
         </div>
+        </div>
         <q-stepper-navigation>
           <q-btn
             color="primary"
@@ -342,11 +345,11 @@
   <div style="margin-bottom:20px;display: flex;">
 
     <q-input dense filled v-model="departure" type="date" label="Gidiş Tarih" mask="##.##.####" label-color="primary" style="width: 200px;margin-right: 20px" :min="formatDate(new Date())"></q-input>
-    <q-input dense filled v-model="departure_time" :rules="['time']" mask="time" label-color="primary" label="Saat" style="width: 100px;margin-top:20px">
+    <q-input dense filled v-model="departure_time" @input="CheckReservationTime" :rules="['time']" mask="time" label-color="primary" label="Saat" style="width: 100px;margin-top:20px">
       <template v-slot:append>
         <q-icon name="access_time" class="cursor-pointer">
           <q-popup-proxy transition-show="scale" ref="timePick" transition-hide="scale">
-            <q-time v-model="departure_time" color="primary" @input="() => $refs.timePick.hide()" format24h>
+            <q-time v-model="departure_time" :hour-options="departure_time_hour_limit" :minute-options="[0, 5,10,15,20,25,30,35,40,45,50,55]" color="primary" @input="() => $refs.timePick.hide()" format24h>
               <div class="row items-center justify-end">
                 <q-btn v-close-popup label="KAPAT" color="primary" flat />
               </div>
@@ -523,12 +526,13 @@ export default {
   name: 'reservationCreate',
   data () {
     return {
+      departure_time_hour_limit:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
       nereden_nereye_title: "Nereden > Nereye",
       transfer_type_title: "Transfer Yönü *",
       car_people_title: "Araç, Kişi sayısı Ücret",
       transfer_tarih:null,
-      departure_time:'00:00',
-      arrival_time:'00:00',
+      departure_time:'',
+      arrival_time:'',
       transfer_direction: [
         {
           id: 1,
@@ -823,7 +827,10 @@ export default {
         {"id":"243","sortname":"YE","name":"Yemen","phonecode":"967"},
         {"id":"244","sortname":"YU","name":"Yugoslavia","phonecode":"38"},
         {"id":"245","sortname":"ZM","name":"Zambiya","phonecode":"260"},
-        {"id":"246","sortname":"ZW","name":"Zimbabve","phonecode":"263"}
+        {"id":"246","sortname":"ZW","name":"Zimbabve","phonecode":"263"},
+        {"id":"247","sortname":"GB","name":"İngiltere","phonecode":"44"},
+        {"id":"248","sortname":"GB","name":"Ingiltere","phonecode":"44"},
+        {"id":"249","sortname":"RKS","name":"Kosovo","phonecode":"383"}
       ],
       ShowHotels:[],
       gender:[
@@ -854,8 +861,15 @@ export default {
     }
   },
   methods: {
+    CheckReservationTime(){
+      console.log( this.departure + " " + this.departure_time)
+    },
     reservationSave() {
       if(this.CheckRole('ReservationCreate')==false){
+        return false
+      }
+      if(this.departure_time==''){
+        this.alert("Uyarı","Lütfen Hareket saatini seçiniz...")
         return false
       }
       this.$q.loading.show()
@@ -1087,8 +1101,12 @@ export default {
           return false
         }
       })
+      if(this.CheckRole('ReservationListAll')=='ReservationListAll'){
+        this.hotel_model = {"hotel_id":"0","hotel_name":"Diğer"}
+      }else{
+        this.hotel_model = this.ShowHotels[0]
+      }
 
-      this.hotel_model = this.ShowHotels[0]
       if(this.hotel_model.hotel_id==0){
         this.hotel_diger=true
       }else{

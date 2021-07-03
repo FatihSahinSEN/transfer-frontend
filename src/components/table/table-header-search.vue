@@ -1,7 +1,6 @@
 <template>
     <q-input
       filled
-      rounded
       outlined
       dense
       color="black"

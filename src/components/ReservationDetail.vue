@@ -105,6 +105,30 @@
     },
     methods: {
       editReservation(){
+        if(this.rez.transfer_status!=3){
+          if(this.rez.gecmis==1 && this.role!=0){
+            if(this.rez.editable==0 && this.role!=0){
+              this.alert("Uyarı","Rezervasyon Yapılmasına 30 dakika'dan az bir süre kaldığı için düzenlenemez. Lütfen telefon ile iletişime geçiniz.")
+            }else{
+              this.$router.push({ name: "ReservationEdit" , params: { reservation:this.rez }})
+            }
+          }else{
+            if(this.role==0){
+              this.$router.push({ name: "ReservationEdit" , params: { reservation:this.rez }})
+            }else{
+              this.alert("Uyarı","Rezervasyon Tarihi geçtiği için düzenlenemez. Lütfen telefon ile iletişime geçiniz.")
+            }
+          }
+        }else{
+          if(this.role==0){
+            this.alert("Uyarı","Bu rezervasyon yapıldı olarak işaretlenmiş Yapacağınız değişiklikler CARI üzerinde geçerli olmayacak.\n\n Değişikliklerden sonra Rezervasyon Durumu beklemede olacak.")
+            this.$router.push({ name: "ReservationEdit" , params: { reservation:this.rez }})
+          }else{
+            this.alert("Uyarı","Gerçekleşen Rezervasyonlar düzenlenemez.")
+          }
+        }
+      },
+      editReservation_old(){
         if(this.rez.gecmis==1){
           if(this.rez.editable==0){
             this.alert("Uyarı","Rezervasyon Yapılmasına 30 dakika'dan az bir süre kaldığı için düzenlenemez. Lütfen telefon ile iletişime geçiniz.")

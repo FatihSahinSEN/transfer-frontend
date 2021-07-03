@@ -27,7 +27,6 @@ export default async ({Vue}) => {
               sessionStorage.removeItem('cVs984vasd5481!daw^sa&54511akghH!x');
               this.$router.push({ name: "login" })
             }else{
-
               this.user_id=result.data.return.id;
             }
           }).catch((err) => {
@@ -46,10 +45,10 @@ export default async ({Vue}) => {
         }else {
           this.$axios.get("/paramaters")
             .then((res) => {
-              // console.log(res.data);
-              document.title = res.data.return.SYSTEM_TITLE;
-              colors.setBrand('primary', res.data.return.SYSTEM_COLOR)
-              this.$store.commit("setParameters",res.data.return)
+              var sonuc = res.data.return;
+              document.title = sonuc.SYSTEM_TITLE;
+              colors.setBrand('primary', sonuc.SYSTEM_COLOR)
+              this.$store.commit("setParameters",sonuc)
             })
             .catch((e) => {
               console.log(e);

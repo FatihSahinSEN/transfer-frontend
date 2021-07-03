@@ -94,14 +94,14 @@
       dropdown: true,
       role: "PhoneBookList"
     },
-    {
-      title: "Kasa",
-      caption: "Gelirler giderler",
-      icon: "attach_money",
-      link: "/messages",
-      dropdown: true,
-      role: "PhoneBookList"
-    },
+    // {
+    //   title: "Kasa",
+    //   caption: "Gelirler giderler",
+    //   icon: "attach_money",
+    //   link: "/kasa",
+    //   dropdown: true,
+    //   role: "PhoneBookList"
+    // },
     {
       title: "Telefon Defteri",
       caption: "Telefon Defteri",
@@ -133,7 +133,7 @@
         width: 0,
         user_id: null,
         profile_edit: null,
-        bizeUlasin:false,
+        bizeUlasin:true,
         mobile:this.$q.platform.is.mobile,
         link:[],
         left:false,
@@ -157,6 +157,9 @@
       };
     },
     methods: {
+      OpenWebSite(){
+        window.open('https://turizmhosting.com', '_blank');
+      },
       setRole(){
         this.essentialLinks=adminLink;
       }
@@ -183,7 +186,7 @@
   };
 </script>
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr lff">
     <div v-if="windowWidth>740">
       <q-header elevated>
         <q-toolbar class="shadow-1">
@@ -309,14 +312,27 @@
         Eposta : <a :href="emailLink" style="color: #fff;text-decoration: none;"> {{ parameters.SYSTEM_CONTACT_MAIL }}</a>
       </q-card-section>
 
-      <q-card-actions align="right">
-        <q-btn color="white" text-color="black" label="KAPAT" @click="bizeUlasin=!bizeUlasin" />
+      <q-card-actions align="left" class="flex justify-between">
+        <div class="column" @click="OpenWebSite" style="cursor: pointer">
+          <div class="row">
+            <q-icon name="img:icon/turizmhosting.png" class="column" style="font-size: 18px;margin-top:5px;margin-right: 3px" />
+            <div class="column">
+              <span style="font-size: 8px;">powered by</span>
+              <span style="font-size: 10px;">Turizm Hosting</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <q-btn  color="white" text-color="black" label="KAPAT" @click="bizeUlasin=!bizeUlasin" />
+          </div>
+        </div>
       </q-card-actions>
+
     </q-card>
 
   </q-layout>
 </template>
-
 <style>
 ::-moz-selection {
   background:none;

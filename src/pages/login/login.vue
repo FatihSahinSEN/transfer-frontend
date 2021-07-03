@@ -29,7 +29,12 @@
                 <q-btn outline rounded size="md" color="red-4" class="full-width text-white" label="Giriş Yap" @click="login" />
               </div>
               <div class="col-6">
-                <p class="text-no-wrap text-grey text-caption text-right">Şifremi Unuttum?</p>
+                <p class="text-no-wrap text-grey text-caption text-right">
+                <label>
+                  <input type="checkbox" v-model="beni_hatirla" />
+                  Beni Hatırla
+                </label>
+                </p>
               </div>
             </div>
           </q-card-actions>
@@ -52,32 +57,40 @@ export default {
     return {
       username: '',
       password: '',
+      beni_hatirla:false
     }
   },
   methods: {
       login() {
-        this.$q.loading.show()
           let user={
             username:this.username,
             password:this.password
           }
           this.$axios.post('user/login', { user })
             .then((result) => {
-              this.$q.loading.hide()
               if(result.data.status.code==200){
                 this.$store.commit("setTekon",result.data.return.token)
                 this.$store.commit("setScopes",result.data.return.scopes)
-                sessionStorage.setItem("x79wAdsc5848!52asd6plk2^a&acs33649", result.data.return.token);
-                sessionStorage.setItem("cVs984vasd5481!daw^sa&54511akghH!w", this.CryptoJS.AES.encrypt(result.data.return.name,"Fatihhh").toString());
-                sessionStorage.setItem("cVs984vasd5481!daw^sa&54511akghH!x", this.CryptoJS.AES.encrypt(result.data.return.user_id,"Fatihhh").toString());
-                sessionStorage.setItem("Klamskwjn123LSkl2^a!awds++123dawd1", this.CryptoJS.AES.encrypt(result.data.return.role,"Fatihhh").toString());
                 this.$axios.defaults.headers.token=result.data.return.token
+                if(this.beni_hatirla){
+                  localStorage.setItem("cVs984vasd5481!daw^sa&54511akghH!w", this.CryptoJS.AES.encrypt(result.data.return.name,"Fatihhh").toString());
+                  localStorage.setItem("cVs984vasd5481!daw^sa&54511akghH!x", this.CryptoJS.AES.encrypt(result.data.return.user_id,"Fatihhh").toString());
+                  localStorage.setItem("Klamskwjn123LSkl2^a!awds++123dawd1", this.CryptoJS.AES.encrypt(result.data.return.role,"Fatihhh").toString());
+                  localStorage.setItem("x79wAdsc5848!52asd6plk2^a&acs33649",result.data.return.token)
+                }else{
+                  sessionStorage.setItem("x79wAdsc5848!52asd6plk2^a&acs33649", result.data.return.token);
+                  sessionStorage.setItem("cVs984vasd5481!daw^sa&54511akghH!w", this.CryptoJS.AES.encrypt(result.data.return.name,"Fatihhh").toString());
+                  sessionStorage.setItem("cVs984vasd5481!daw^sa&54511akghH!x", this.CryptoJS.AES.encrypt(result.data.return.user_id,"Fatihhh").toString());
+                  sessionStorage.setItem("Klamskwjn123LSkl2^a!awds++123dawd1", this.CryptoJS.AES.encrypt(result.data.return.role,"Fatihhh").toString());
+                }
+
                 this.$router.push({ name: "ReservationList" })
+
               }else{
                   this.alert("HATA",result.data.status.message)
               }
             }).catch((err) => {
-              this.$q.loading.hide()
+
                 if(!err.status){
                   this.alert("HATA", "Sunucuyla bağlantı sağlanamadı..");
                 }
@@ -89,10 +102,21 @@ export default {
         message: message,
         persistent: true
       })
+    },
+    beniHatirlaControl(){
+        if(localStorage.hasOwnProperty("x79wAdsc5848!52asd6plk2^a&acs33649")){
+          token = localStorage.getItem("x79wAdsc5848!52asd6plk2^a&acs33649") || null;
+          this.$store.commit("setTekon",result.data.return.token)
+          this.$store.commit("setScopes",result.data.return.scopes)
+          this.$axios.defaults.headers.token=result.data.return.token
+          this.CheckToken();
+          this.$router.push({ name: "ReservationList" })
+        }
     }
   },
   mounted() {
     this.getParameters();
+    this.beniHatirlaControl();
   },
   computed: {
     ...mapState(["parameters"]),

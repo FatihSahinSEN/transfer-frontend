@@ -2,7 +2,7 @@
   "name": "transfer-system",
   "version": "0.0.1",
   "description": "Transfer Yönetim Sistemi",
-  "productName": "VIP VAN TRANSFER",
+  "productName": "Go By VIP",
   "author": "Fatih Şahin ŞEN <64567654+FatihSahinSEN@users.noreply.github.com>",
   "private": true,
   "scripts": {

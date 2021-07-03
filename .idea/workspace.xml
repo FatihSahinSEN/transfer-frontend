@@ -21,7 +21,26 @@
   <component name="ChangeListManager">
     <list default="true" id="c3e54f39-f471-46a1-8ce4-29c42385c276" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.quasar/client-entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/.quasar/client-entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quasar.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/quasar.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src-pwa/register-service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-pwa/register-service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boot/mixins.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/boot/mixins.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CariDetials.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CariDetials.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InstallApp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InstallApp.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ReservationDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ReservationDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table/table-header-search.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/table-header-search.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/MainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Print.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Print.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/phones/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/phones/create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/reservation/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reservation/create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/reservation/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reservation/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/voucher/extre.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/voucher/extre.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/admin-routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/admin-routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +70,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../electron" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../moowifi-frontend" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -176,6 +195,28 @@
       <workItem from="1616565911979" duration="823000" />
       <workItem from="1616714904318" duration="6639000" />
       <workItem from="1617045462053" duration="4468000" />
+      <workItem from="1617175933919" duration="1773000" />
+      <workItem from="1617873151698" duration="100000" />
+      <workItem from="1618405632569" duration="815000" />
+      <workItem from="1618406561154" duration="654000" />
+      <workItem from="1618743816686" duration="2680000" />
+      <workItem from="1619871525491" duration="19292000" />
+      <workItem from="1619950238855" duration="13838000" />
+      <workItem from="1620020988392" duration="7949000" />
+      <workItem from="1620052291259" duration="1502000" />
+      <workItem from="1620144330926" duration="463000" />
+      <workItem from="1620895132040" duration="828000" />
+      <workItem from="1621364957049" duration="9280000" />
+      <workItem from="1621402422651" duration="1208000" />
+      <workItem from="1621510929556" duration="8149000" />
+      <workItem from="1621692117706" duration="5344000" />
+      <workItem from="1621844484123" duration="24155000" />
+      <workItem from="1622025728977" duration="2531000" />
+      <workItem from="1622374521469" duration="1718000" />
+      <workItem from="1622595833352" duration="516000" />
+      <workItem from="1622849849682" duration="55000" />
+      <workItem from="1625175375178" duration="6305000" />
+      <workItem from="1625261760146" duration="6634000" />
     </task>
     <servers />
   </component>
@@ -195,36 +236,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="814" y="356" key="#Closure_Linter" timestamp="1608254490619">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="814" y="356" key="#Closure_Linter/0.0.1920.1040@0.0.1920.1040" timestamp="1608254490619" />
-    <state x="586" y="198" key="#Inspections" timestamp="1608251029316">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1608251029316" />
-    <state x="678" y="313" key="#JSCS" timestamp="1608254503803">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="678" y="313" key="#JSCS/0.0.1920.1040@0.0.1920.1040" timestamp="1608254503803" />
     <state x="601" y="267" key="#Notifications" timestamp="1614802030727">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="601" y="267" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1614802030727" />
-    <state x="845" y="382" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1608359001579" />
-    <state x="678" y="408" key="#Stylelint" timestamp="1608246826818">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="678" y="408" key="#Stylelint/0.0.1920.1040@0.0.1920.1040" timestamp="1608246826818" />
-    <state x="526" y="192" key="FileChooserDialogImpl" timestamp="1616012701749">
+    <state x="435" y="74" key="FileChooserDialogImpl" timestamp="1622849904043">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="526" y="192" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616012701749" />
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613504656058" />
-    <state x="0" y="0" key="FileDocumentManager.FileCacheConflict" timestamp="1608238076871">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="0" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1920.1040@0.0.1920.1040" timestamp="1608238076871" />
+    <state x="435" y="74" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1622849904043" />
     <state width="1345" height="179" key="GridCell.Tab.0.bottom" timestamp="1614657739566">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -245,36 +264,27 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="328" y="17" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1615697801602" />
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1609678670745" />
-    <state x="92" y="92" width="1736" height="856" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1611702671434">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1621900525104">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="92" y="92" width="1736" height="856" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1611702671434" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1611712952025">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611712952025" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611696873624">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611696873624" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1621900525104" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/ReservationDetail.vue</url>
-          <line>119</line>
+          <line>143</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/ReservationDetail.vue</url>
-          <line>129</line>
+          <line>153</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/ReservationDetail.vue</url>
-          <line>132</line>
+          <line>156</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -396,6 +406,16 @@
           <url>file://$PROJECT_DIR$/src/pages/cars/index.vue</url>
           <line>8</line>
           <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/reservation/create_new.vue</url>
+          <line>458</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/reservation/create_new.vue</url>
+          <line>398</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

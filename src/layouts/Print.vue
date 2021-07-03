@@ -38,18 +38,20 @@
   body {
     background: rgb(204,204,204);
     box-sizing: border-box;
+    overflow: hidden;
+    margin:0;
   }
   div + .page {
     background: white;
     display: block;
     margin: 2em auto;
     margin-bottom: 0.5cm;
-    padding: 0.5cm;
     box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+
  }
   div[size="A4"], .page {
-    width: 100%;
-    max-width: 20.9cm;
+    width: 110%;
+    max-width: 20.5cm;
     overflow: hidden;
   }
   div[size="A4L"] {
@@ -71,6 +73,9 @@
     body {
       background: none;
       box-shadow: none;
+      overflow: hidden;
+      margin:0px;
+      padding: 0px;
     }
     .yazdir {
       display:none;
@@ -79,8 +84,8 @@
       background: white;
       display: block;
       margin: 0;
-      padding: 0.5cm;
       box-shadow: none;
+
     }
     .page-break { display: block; page-break-before: always; }
 

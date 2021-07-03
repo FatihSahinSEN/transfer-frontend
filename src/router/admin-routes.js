@@ -110,6 +110,11 @@ const routes = [
         component: () => import("pages/reservation/index.vue")
       },
       {
+        path: "new",
+        name: "reservationNew",
+        component: () => import("pages/reservation/create_new.vue")
+      },
+      {
         path: "create",
         name: "reservationCreate",
         component: () => import("pages/reservation/create.vue")
@@ -128,6 +133,16 @@ const routes = [
       path: "",
       name:"finans",
       component: () => import("pages/cariler/userIndex.vue")
+    }]
+  },
+
+  {
+    path: "/kasa",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{
+      path: "",
+      name:"kasa",
+      component: () => import("pages/kasa/index.vue")
     }]
   },
   {

@@ -44,6 +44,7 @@
           const { outcome } = await this.deferredPrompt.userChoice;
           // console.log(`User response to the install prompt: ${outcome}`);
           this.deferredPrompt = null;
+          this.HideInstall();
         }
       },
       mounted() {

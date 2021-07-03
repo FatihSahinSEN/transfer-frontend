@@ -14,7 +14,7 @@
     <template v-slot:header="props">
       <tr><th colspan="10" class="report-header-top"> </th></tr>
       <tr class="page-header">
-      <th colspan="8" class="report-info"><b>{{ changeDateFormat(start_date) }}</b> ve <b>{{ changeDateFormat(end_date) }}</b> arasındaki transferler ve ödemeler</th>
+      <th colspan="7" class="report-info"><b>{{ changeDateFormat(start_date) }}</b> ve <b>{{ changeDateFormat(end_date) }}</b> arasındaki transferler ve ödemeler</th>
       <th colspan="3" class="report-date"><b>Tarih :</b> {{ bugun }}</th>
       </tr>
       <q-tr :props="props">
@@ -131,30 +131,30 @@
     font-size: 0.8em;
     font-weight: normal;
   }
-  .report-date {
+    .total {
+      font-size: 1.1em;font-weight: 700;text-align: right;
+    }
+
+    .report-header-top {
+      border:none;
+    }
+    @media print {
+      .page {
+        width: 21cm;
+        padding-bottom: 10mm;
+      }
+      .page-header {
+        page-break-before: auto;
+        padding-top: 50px;
+      }
+      .report-header-top {
+        border:5mm solid transparent;
+      }
+    }
+    .report-date {
     text-align: right;
     border-bottom: none;
     font-size: 0.8em;
     font-weight: normal;
-  }
-  .total {
-    font-size: 1.1em;font-weight: 700;text-align: right;
-  }
-
-  .report-header-top {
-    border:none;
-  }
-  @media print {
-    .page {
-      width: 21cm;
-      padding-bottom: 10mm;
-    }
-    .page-header {
-      page-break-before: auto;
-      padding-top: 50px;
-    }
-    .report-header-top {
-      border:5mm solid transparent;
-    }
   }
 </style>

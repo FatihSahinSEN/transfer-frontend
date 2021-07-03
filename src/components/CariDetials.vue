@@ -1,7 +1,8 @@
 <template>
   <div style="background: #fff">
   <q-card v-if="CheckRole('CariDetail')">
-      <q-toolbar class="col-8 bg-primary text-white" v-if="details.user_status">
+    <div v-if="details.user_status">
+      <q-toolbar class="col-8 bg-primary text-white">
         <div style="width: 100%" v-if="mobile">
           <q-toolbar-title style="width: 100%;text-align: center">{{ details.user_fullname }} </q-toolbar-title>
           <q-separator inset />
@@ -10,7 +11,8 @@
               <div class="row no-wrap q-pa-md">
                 <div class="column">
                   <div class="text-h6 q-mb-md text-center">Borç</div>
-                  <q-input v-model="price" type="text" mask="#.##" fill-mask="0" prefix="+" suffix="₺" input-class="text-right" reverse-fill-mask color="primary" label="Miktar" autofocus />
+                  <q-input v-model="transaction_date" type="date" input-class="text-center" color="primary" label="İşlem Tarihi" autofocus />
+                  <q-input v-model="price" type="text" mask="#" fill-mask="0" prefix="+" suffix="₺" input-class="text-right" reverse-fill-mask color="primary" label="Miktar" autofocus />
                   <q-select
                     label="Hesap Seçiniz"
                     color="primary"
@@ -29,7 +31,8 @@
               <div class="row no-wrap q-pa-md">
                 <div class="column">
                   <div class="text-h6 q-mb-md text-center">Alacak</div>
-                  <q-input v-model="price" type="text" mask="#.##" fill-mask="0" suffix="₺" prefix="-" input-class="text-right" reverse-fill-mask color="primary" label="Miktar" autofocus />
+                  <q-input v-model="transaction_date" type="date" input-class="text-center" color="primary" label="İşlem Tarihi" autofocus />
+                  <q-input v-model="price" type="text" mask="#" fill-mask="0" suffix="₺" prefix="-" input-class="text-right" reverse-fill-mask color="primary" label="Miktar" autofocus />
                   <q-select
                     label="Hesap Seçiniz"
                     color="primary"
@@ -50,9 +53,9 @@
                 <div class="column">
                   <q-toggle v-model="cari_iptaller.gecerli" checked-icon="check" label="Geçerli Cariler" unchecked-icon="clear" />
                   <q-toggle v-model="cari_iptaller.iptal" checked-icon="check" label="İptal Cariler" unchecked-icon="clear" />
-                  <q-input v-model="start_date" type="date" :max="end_date" input-class="text-center" color="primary" label="Başlama Tarihi" autofocus @change="changeDate" />
-                  <q-input v-model="end_date" type="date" :min="start_date" input-class="text-center" color="primary" label="Bitiş Tarihi" @change="changeDate" />
-                  <q-btn push color="primary" label="LİSTELE" @click="getDataAPI"></q-btn>
+                  <q-input v-model="start_date" type="date" :max="end_date" input-class="text-center" color="primary" label="Başlama Tarihi" autofocus />
+                  <q-input v-model="end_date" type="date" :min="start_date" input-class="text-center" color="primary" label="Bitiş Tarihi" />
+                  <q-btn push color="primary" label="LİSTELE" @click="ContentListDate"></q-btn>
                 </div>
               </div>
             </q-menu>
@@ -64,11 +67,12 @@
         <div v-else style="display: flex;width: 100%">
           <q-toolbar-title>{{ details.user_fullname }} </q-toolbar-title>
           <q-btn stretch flat label="BORÇ" icon="add" class="bg-primary text-white q-mr-lg" v-if="CheckRole('CariBorc')">
-            <q-menu @before-show="hesap=borc_hesaplar[0]" ref="menu">
+            <q-menu @before-show="hesap=borc_hesaplar[0]" ref="menu" STYLE="min-height: 460px">
               <div class="row no-wrap q-pa-md">
                 <div class="column">
                   <div class="text-h6 q-mb-md text-center">Borç</div>
-                  <q-input v-model="price" type="text" mask="#.##" fill-mask="0" prefix="+" suffix="₺" input-class="text-right" reverse-fill-mask color="primary" label="Miktar" autofocus />
+                  <q-input v-model="transaction_date" type="date" input-class="text-center" color="primary" label="İşlem Tarihi" autofocus />
+                  <q-input v-model="price" type="text" mask="#" fill-mask="0" prefix="+" suffix="₺" input-class="text-right" reverse-fill-mask color="primary" label="Miktar" autofocus />
                   <q-select
                     label="Hesap Seçiniz"
                     color="primary"
@@ -83,11 +87,12 @@
             </q-menu>
           </q-btn>
           <q-btn stretch flat label="ALACAK" icon="remove" class="bg-primary text-white q-mr-lg"  v-if="CheckRole('CariAlacak')"  >
-            <q-menu @before-show="hesap=alacak_hesaplar[0]" ref="menu">
+            <q-menu @before-show="hesap=alacak_hesaplar[0]" ref="menu" STYLE="min-height: 460px">
               <div class="row no-wrap q-pa-md">
                 <div class="column">
                   <div class="text-h6 q-mb-md text-center">Alacak</div>
-                  <q-input v-model="price" type="text" mask="#.##" fill-mask="0" suffix="₺" prefix="-" input-class="text-right" reverse-fill-mask color="primary" label="Miktar" autofocus />
+                  <q-input v-model="transaction_date" type="date" input-class="text-center" color="primary" label="İşlem Tarihi" autofocus />
+                  <q-input v-model="price" type="text" mask="#" fill-mask="0" suffix="₺" prefix="-" input-class="text-right" reverse-fill-mask color="primary" label="Miktar" autofocus />
                   <q-select
                     label="Hesap Seçiniz"
                     color="primary"
@@ -108,9 +113,9 @@
                 <div class="column">
                   <q-toggle v-model="cari_iptaller.gecerli" checked-icon="check" label="Geçerli Cariler" unchecked-icon="clear" />
                   <q-toggle v-model="cari_iptaller.iptal" checked-icon="check" label="İptal Cariler" unchecked-icon="clear" />
-                  <q-input v-model="start_date" type="date" :max="end_date" input-class="text-center" color="primary" label="Başlama Tarihi" autofocus @change="changeDate" />
-                  <q-input v-model="end_date" type="date" :min="start_date" input-class="text-center" color="primary" label="Bitiş Tarihi" @change="changeDate" />
-                  <q-btn push color="primary" label="LİSTELE" @click="getDataAPI"></q-btn>
+                  <q-input v-model="start_date" type="date" :max="end_date" input-class="text-center" color="primary" label="Başlama Tarihi" autofocus  />
+                  <q-input v-model="end_date" type="date" :min="start_date" input-class="text-center" color="primary" label="Bitiş Tarihi" />
+                  <q-btn push color="primary" label="LİSTELE" @click="ContentListDate"></q-btn>
                 </div>
               </div>
             </q-menu>
@@ -122,6 +127,15 @@
         </div>
 
       </q-toolbar>
+      <div class="q-pa-md items-start q-gutter-md">
+        <div class="row justify-between text-h6">
+            <div v-if="ListType=='limit'">Son işlemler</div>
+            <div v-else>{{ changeDateFormat(start_date) }} - {{ changeDateFormat(end_date) }}</div>
+          <q-btn stretch class="bg-primary text-white q-mr-lg">Toplam Bakiye: {{ ToplamBakiye.Total }} ₺</q-btn>
+        </div>
+        <q-separator inset />
+      </div>
+    </div>
     <div class="q-pa-md row items-start q-gutter-md" v-else>
       <div class="text-h6 fit">Finans
         <q-btn stretch flat label="EKSTRE" icon="content_paste" class="q-mr-lg" @click="ekstre"></q-btn>
@@ -129,29 +143,28 @@
           <q-menu>
             <div class="row no-wrap q-pa-md">
               <div class="column">
-                <q-input v-model="start_date" type="date" :max="end_date" input-class="text-center" color="primary" label="Başlama Tarihi" autofocus @change="changeDate" />
-                <q-input v-model="end_date" type="date" :min="start_date" input-class="text-center" color="primary" label="Bitiş Tarihi" @change="changeDate" />
-                <q-btn push color="primary" label="LİSTELE" @click="getDataAPI"></q-btn>
+                <q-input v-model="start_date" type="date" :max="end_date" input-class="text-center" color="primary" label="Başlama Tarihi" autofocus  />
+                <q-input v-model="end_date" type="date" :min="start_date" input-class="text-center" color="primary" label="Bitiş Tarihi" />
+                <q-btn push color="primary" label="LİSTELE" @click="ContentListDate"></q-btn>
               </div>
             </div>
           </q-menu>
         </q-btn>
+        <q-btn stretch class="bg-primary text-white q-mr-lg" style="float: right">Toplam Bakiye: {{ ToplamBakiye.Total }} ₺</q-btn>
       </div>
       <q-separator inset />
     </div>
+
     <q-card-section v-if="detay.length>0">
         <div class="fit">
           <q-input
             filled
-            rounded
             outlined
             dense
             color="black"
             label="Tabloda ara.."
             v-model="filter"
           >
-
-
             <template v-slot:prepend>
               <q-icon name="search"/>
             </template>
@@ -170,44 +183,44 @@
           >
             <template v-slot:body="props">
               <q-tr :props="props" :class="SetColor(props.row.cari_type,props.row.cari_status)" :key="props.row.index" v-if="ShowCariStatus(props.row.cari_status)" @click="EditCari('',props.row)">
-                <q-td key="cari_created" :props="props" style="width: 150px">{{ props.row.CurrentDate }}</q-td>
+                <q-td key="rez_id" :props="props" v-if="props.row.rez_id!==null"><b>#{{ props.row.rez_id }}</b></q-td>
+                <q-td key="rez_id" :props="props" v-else>#</q-td>
+                <q-td key="transaction_date" :props="props" style="width: 150px">{{ props.row.tarih }}</q-td>
                 <q-td key="hesap_text" :props="props">{{ props.row.hesap_text }}</q-td>
-                <q-td key="aciklama" colspan="7" v-if="props.row.rez_id===null" style="text-align: center"><b>{{ props.row.aciklama }}</b></q-td>
+                <q-td key="aciklama" colspan="6" v-if="props.row.rez_id===null" style="text-align: center"><b>{{ props.row.aciklama }}</b></q-td>
                 <q-td key="transfer_type_text" :props="props" v-if="props.row.rez_id!==null">{{ props.row.transfer_type_text }}</q-td>
                 <q-td key="passenger_fullname" :props="props" v-if="props.row.rez_id!==null">{{ props.row.passenger_fullname }}</q-td>
                 <q-td key="departure_area_name" :props="props" v-if="props.row.rez_id!==null">{{ props.row.departure_area_name.substr(0,20) }}</q-td>
                 <q-td key="arrival_area_name" :props="props" v-if="props.row.rez_id!==null">{{ props.row.arrival_area_name.substr(0,20) }}</q-td>
                 <q-td key="hotel_name" :props="props" v-if="props.row.rez_id!==null">{{ props.row.hotel_name }}</q-td>
-                <q-td key="rez_id" :props="props" v-if="props.row.rez_id!==null">{{ props.row.rez_id }}</q-td>
                 <q-td key="car_name" :props="props" v-if="props.row.rez_id!==null">{{ props.row.car_name }}</q-td>
                 <q-td key="cari_tutar" :props="props">{{ props.row.cari_tutar }}</q-td>
               </q-tr>
             </template>
-            <template v-slot:top-row>
-              <q-tr>
-                <q-td colspan="1" style="text-align: right;font-size: 1.3em;font-weight: 700">BORÇ : </q-td>
-                <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
-                <q-td colspan="1" style="text-align: right;font-size: 1.3em;font-weight: 700">ALACAK : </q-td>
-                <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
-                <q-td colspan="5" style="text-align: right;font-size: 1.3em;font-weight: 700">DEVİR : </q-td>
-                <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
 
-              </q-tr>
-            </template>
             <template v-slot:bottom-row>
-              <q-tr>
-<!--                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Tarih :</q-td>-->
-<!--                <q-td style="font-size: 1.3em;font-weight: 700" v-text="changeDateFormat(start_date)"></q-td>-->
-<!--                <q-td style="font-size: 1.3em;font-weight: 700" v-text="changeDateFormat(end_date)"></q-td>-->
-<!--                <q-td colspan="5"></q-td>-->
-                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Toplam Borç :</q-td>
+              <q-tr v-if="ListType=='date'">
+                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Başlangıç :</q-td>
                 <q-td style="font-size: 1.3em;font-weight: 700" v-text="changeDateFormat(start_date)"></q-td>
-                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Toplam Alacak</q-td>
+                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Bitiş : </q-td>
                 <q-td style="font-size: 1.3em;font-weight: 700" v-text="changeDateFormat(end_date)"></q-td>
+                <q-td colspan="4"></q-td>
+                <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Tarih Toplam : </q-td>
+                <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
+              </q-tr>
+              <q-tr v-else>
+                <q-td colspan="4" style="text-align: left;font-size: 1.3em;font-weight: 700"></q-td>
                 <q-td colspan="4"></q-td>
                 <q-td style="text-align: right;font-size: 1.3em;font-weight: 700">Toplam : </q-td>
                 <q-td style="font-size: 1.3em;font-weight: 700"> {{ totalValue }} ₺</q-td>
               </q-tr>
+
+            </template>
+            <template v-slot:bottom>
+              <div style="display: flex;justify-content: center;width: 100%;">
+                <q-btn dense flat icon="expand_more" label="Daha fazla göster" @click="AddContentData" v-if="pageLimit" />
+                <q-btn dense flat disable icon="done" class="text-green-14" label="Tüm veriler yüklendi." v-else />
+              </div>
             </template>
           </q-table>
         </div>
@@ -216,9 +229,9 @@
       <div class="text-center fit" style="display: flex;align-items: center;justify-content: center;flex-direction: column">
         <h6>Seçili tarihler arasında kayıt bulunamadı.</h6>
         <div style="max-width: 200px;" class="center-block">
-          <q-input v-model="start_date" type="date" :max="end_date" input-class="text-center" color="primary" label="Başlama Tarihi" autofocus @change="changeDate" />
-          <q-input v-model="end_date" type="date" :min="start_date" input-class="text-center" color="primary" label="Bitiş Tarihi" @change="changeDate"  />
-          <q-btn push color="primary" label="LİSTELE" @click="getDataAPI" style="margin-top: 15px"></q-btn>
+          <q-input v-model="start_date" type="date" :max="end_date" input-class="text-center" color="primary" label="Başlama Tarihi" autofocus />
+          <q-input v-model="end_date" type="date" :min="start_date" input-class="text-center" color="primary" label="Bitiş Tarihi"  />
+          <q-btn push color="primary" label="LİSTELE" @click="ContentListDate" style="margin-top: 15px"></q-btn>
         </div>
       </div>
 
@@ -262,6 +275,7 @@
         editData: {
           cari_tutar:0,
         },
+        transaction_date:null,
         OldData:null,
         filter: '',
         cariler:[],
@@ -294,23 +308,25 @@
 
         ],
         pagination: {
-          sortBy: 'cari_created',
+          sortBy: 'transaction_date',
           descending: true,
           page: 1,
           rowsPerPage: 0,
           list: [5, 10, 15, 20, 30, 40, 50, 100, 500]
           // rowsNumber: xx if getting data from a server
         },
+        ListType:'limit',
+        pageLimit:true,
 
         columns: [
-          { name: 'cari_created',label: 'Tarih Saat', field: 'cari_created', align: 'left',sortable: true},
+          { name: 'rez_id', label: 'Rez', field: 'rez_id', align: 'left'},
+          { name: 'transaction_date',label: 'Tarih', field: 'transaction_date', align: 'left',sortable: true},
           { name: 'hesap_text', label: 'İşlem', field: 'hesap_text', align: 'left',sortable: true},
           { name: 'transfer_type_text', label: 'Tip', field: 'transfer_type_text', align: 'left'},
           { name: 'passenger_fullname', label: 'Ad Soyad', field: 'passenger_fullname', align: 'left'},
           { name: 'departure_area_name', label: 'Nereden', field: 'departure_area_name', align: 'left'},
           { name: 'arrival_area_name', label: 'Nereye', field: 'arrival_area_name', align: 'left'},
           { name: 'hotel_name', label: 'Hotel', field: 'hotel_name', align: 'left'},
-          { name: 'rez_id', label: 'Rez NO', field: 'rez_id', align: 'left'},
           { name: 'car_name', label: 'Araç', field: 'car_name', align: 'left'},
           { name: 'cari_tutar', label: 'Bakiye', field: 'cari_tutar', align: 'left',sortable: true},
         ],
@@ -322,13 +338,27 @@
           gecerli: true
         },
         topla:[],
-        OldPrice:0
+        OldPrice:0,
+        ToplamBakiye:0,
+        ContentLimit:1
       }
     },
     methods: {
-      changeDate(){
-        window.sessionStorage.setItem("CariStartDate",this.start_date)
-        window.sessionStorage.setItem("CariEndDate",this.end_date)
+      ContentListDate(){
+        this.$q.loading.show({
+          message: 'Veriler <b>yükleniyor</b> lütfen bekleyiniz.<br/><span class="text-orange text-weight-bold">Cariler</span>'
+        })
+        this.detay=[]
+        this.getDataAPI()
+      },
+      AddContentData(){
+        this.$q.loading.show({
+          message: 'Veriler <b>yükleniyor</b> lütfen bekleyiniz.<br/><span class="text-orange text-weight-bold">Cariler</span>'
+        })
+        this.ContentLimit=this.ContentLimit+1;
+        this.start_date=null
+        this.end_date=null
+        this.getDataAPI()
       },
       EditCari(event,row){
         if(this.CheckRole('CariBorc')==false) {
@@ -379,7 +409,6 @@
             aciklama:row.aciklama,
             cari_tutar:row.cari_tutar,
           }
-          console.log(row)
           this.$axios.post('cari/edit', { cari_status })
             .then((result) => {
               this.$q.loading.hide()
@@ -441,17 +470,25 @@
 
       },
       getDataAPI() {
-
         var account_balance = {
-            user_id: this.details.user_id,
-            start_date: this.start_date,
-            end_date: this.end_date,
+          user_id: this.details.user_id,
+          start_date: this.start_date,
+          end_date: this.end_date,
+          limit: this.ContentLimit
         }
         this.$axios.post('cari/account', { account_balance } )
           .then((result) => {
-            this.detay=[]
+            this.$q.loading.hide()
+            if(this.ContentLimit==1){
+              this.ToplamBakiye=result.data.return.total
+            }
+            this.pageLimit=result.data.return.pageLimit
+            delete result.data.return.pageLimit
+            this.ListType=result.data.return.type
+            delete result.data.return.type
             this.start_date=result.data.return.date.start_date
             this.end_date=result.data.return.date.end_date
+            console.log(result.data.return)
             Object.entries(result.data.return).forEach(entry => {
               const [key, value] = entry;
               if (key != "status" && key != "date") {
@@ -460,7 +497,8 @@
             });
             this.TotalAmount()
           }).catch((err) => {
-            this.CheckToken()
+            this.$q.loading.hide()
+            // this.CheckToken()
           });
       },
       AddAccountAmount(){
@@ -476,6 +514,7 @@
           aciklama: this.aciklama,
           hotel_id: this.details.hotel_id,
           user_id: this.details.user_id,
+          transaction_date: this.transaction_date,
           rez_id: 0,
           status:1,
           created_user: this.CryptoJS.AES.decrypt(sessionStorage.getItem("cVs984vasd5481!daw^sa&54511akghH!x"), "Fatihhh").toString(this.CryptoJS.enc.Utf8)
@@ -512,7 +551,8 @@
               cari_status : 1,
               tarih : zz.tarih,
               cari_updated : zz.updated,
-              passenger_fullname : null
+              passenger_fullname : null,
+              transaction_date : zz.transaction_date
             }
             this.detay.push(data)
             this.UpdateParentData(this.hesap.type,add_balance.cari_tutar)
@@ -583,10 +623,9 @@
 
       },
     mounted() {
-      if(window.sessionStorage.hasOwnProperty("CariStartDate")){
-        this.start_date=window.sessionStorage.getItem("CariStartDate")
-        this.end_date=window.sessionStorage.getItem("CariEndDate")
-      }
+      this.$q.loading.show({
+        message: 'Veriler <b>yükleniyor</b> lütfen bekleyiniz.<br/><span class="text-orange text-weight-bold">Cariler</span>'
+      })
       this.getDataAPI();
 
     },
@@ -606,5 +645,9 @@
     color: #ffffff;
     font-size: 1.4em;
     text-align: center;
+  }
+  .my-card {
+    max-width: 300px;
+    margin:1em;
   }
 </style>
