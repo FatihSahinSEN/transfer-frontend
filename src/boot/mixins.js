@@ -5,11 +5,7 @@ export default async ({Vue}) => {
   Vue.mixin({
     methods: {
       CheckRole(value){
-        var role=this.$store.state.scopes.find((item) => item==value)
-        if(role){
-          return role
-        }
-        return false
+        return true
       },
       CheckToken(){
         var token = sessionStorage.getItem("x79wAdsc5848!52asd6plk2^a&acs33649")

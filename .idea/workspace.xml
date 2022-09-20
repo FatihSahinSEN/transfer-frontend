@@ -19,28 +19,66 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e54f39-f471-46a1-8ce4-29c42385c276" name="Default Changelist" comment="">
+    <list default="true" id="7db282be-7f6f-4017-8357-d8d7f5f10fd0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/transfer-frontend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/boot/alert.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ReservationTableList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/forms/Form.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/table/Table.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/SharedFormPages.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/SharedTablePages.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/login/test.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/AreaService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/AuthService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/CarService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/HotelService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/ReservationStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/StoreModule.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/stylesheetLinters/stylelint.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/transfer.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.quasar/client-entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/.quasar/client-entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.quasar/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.quasar/artifacts.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.quasar/client-entry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.quasar/client-prefetch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.quasar/import-quasar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quasar.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/quasar.conf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src-pwa/register-service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src-pwa/register-service-worker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/quasar-logo-full.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boot/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/boot/axios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/boot/mixins.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/boot/mixins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CariDetials.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CariDetials.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InstallApp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InstallApp.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ReservationDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ReservationDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/table-header-search.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/table-header-search.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EssentialLink.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EssentialLink.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MenuDropdown.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MenuDropdown.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/LoginLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/LoginLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/MainLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Print.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Print.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/cars/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/cars/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/hotels/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/hotels/update.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hotels/update.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/login/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/phones/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/phones/create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/prices/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/prices/create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/prices/update.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/prices/update.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/regions/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/area/create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/regions/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/regions/update.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/area/update.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/reservation/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reservation/create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/reservation/create_new.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reservation/create_new.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/reservation/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reservation/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/voucher/extre.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/voucher/extre.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/admin-routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/admin-routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/reservation/update.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/reservation/update.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/users/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/admin-routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/dist/routes.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/dist/routes.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/sharer-routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/user-routes.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store-flag.d.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +96,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1llYofx0QuZVtgHGoXPJzU4jLno" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="25qzoe0uLbnRMftQe8tInnLlB7n" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -69,36 +113,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../moowifi-frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.eslintrc.js" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.detected.package.stylelint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.jscs" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
-    <property name="node.js.path.for.package.stylelint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.jscs" value="" />
     <property name="node.js.selected.package.standard" value="" />
-    <property name="node.js.selected.package.stylelint" value="" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="prettier.files.pattern" value="{**/*,*}.{js,ts,jsx,tsx,vue}" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="D:\Fatih PC\Masaüstü\GitHub\transfer-frontend\node_modules\prettier" />
+    <property name="run.prettier.on.save" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\fatih\frontend\src\pages\settings" />
-      <recent name="D:\Fatih PC\Masaüstü\transfer\src\pages\notice" />
-      <recent name="D:\Fatih PC\Masaüstü\transfer\src\components" />
-      <recent name="D:\Fatih PC\Masaüstü\transfer\src\pages\hotels" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Fatih PC\Masaüstü\transfer\src\components" />
+      <recent name="D:\Fatih PC\Masaüstü\GitHub\transfer-frontend\src\store" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -106,117 +139,36 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c3e54f39-f471-46a1-8ce4-29c42385c276" name="Default Changelist" comment="" />
-      <created>1608173321037</created>
+      <changelist id="7db282be-7f6f-4017-8357-d8d7f5f10fd0" name="Default Changelist" comment="" />
+      <created>1646269580716</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1608173321037</updated>
-      <workItem from="1608173336241" duration="245000" />
-      <workItem from="1608237971038" duration="6226000" />
-      <workItem from="1608247244494" duration="26788000" />
-      <workItem from="1608314004845" duration="329000" />
-      <workItem from="1608358985326" duration="10482000" />
-      <workItem from="1608369515348" duration="3336000" />
-      <workItem from="1608401132816" duration="9706000" />
-      <workItem from="1608481247250" duration="41191000" />
-      <workItem from="1608581210788" duration="11765000" />
-      <workItem from="1608758739507" duration="1715000" />
-      <workItem from="1608762766198" duration="1270000" />
-      <workItem from="1608783192862" duration="11429000" />
-      <workItem from="1608970447575" duration="12305000" />
-      <workItem from="1608988962249" duration="134000" />
-      <workItem from="1608989164656" duration="4650000" />
-      <workItem from="1609077499390" duration="2536000" />
-      <workItem from="1609161357788" duration="147000" />
-      <workItem from="1609328749570" duration="12313000" />
-      <workItem from="1609399100511" duration="4377000" />
-      <workItem from="1609422651592" duration="4435000" />
-      <workItem from="1609675142835" duration="11072000" />
-      <workItem from="1609772327883" duration="1467000" />
-      <workItem from="1609796656974" duration="11952000" />
-      <workItem from="1609933149046" duration="7060000" />
-      <workItem from="1609957785744" duration="17662000" />
-      <workItem from="1609988652896" duration="5611000" />
-      <workItem from="1610115388021" duration="16883000" />
-      <workItem from="1610136640299" duration="13981000" />
-      <workItem from="1610191313570" duration="3504000" />
-      <workItem from="1610272249101" duration="33628000" />
-      <workItem from="1610481098595" duration="7511000" />
-      <workItem from="1610567259207" duration="22088000" />
-      <workItem from="1610657946936" duration="684000" />
-      <workItem from="1610815980676" duration="3960000" />
-      <workItem from="1610907082383" duration="5788000" />
-      <workItem from="1610971372766" duration="18000" />
-      <workItem from="1611136716968" duration="13423000" />
-      <workItem from="1611168154007" duration="583000" />
-      <workItem from="1611181167908" duration="9948000" />
-      <workItem from="1611400242319" duration="2411000" />
-      <workItem from="1611418553805" duration="7272000" />
-      <workItem from="1611499685107" duration="16133000" />
-      <workItem from="1611566732726" duration="7850000" />
-      <workItem from="1611680307082" duration="3692000" />
-      <workItem from="1611684429220" duration="28982000" />
-      <workItem from="1611754035254" duration="3976000" />
-      <workItem from="1613041306750" duration="85000" />
-      <workItem from="1613041486035" duration="7742000" />
-      <workItem from="1613081920689" duration="70000" />
-      <workItem from="1613205170726" duration="6341000" />
-      <workItem from="1613229155763" duration="2282000" />
-      <workItem from="1613303888732" duration="1198000" />
-      <workItem from="1613390826196" duration="490000" />
-      <workItem from="1613502158801" duration="701000" />
-      <workItem from="1613504584478" duration="79000" />
-      <workItem from="1613581050237" duration="36000" />
-      <workItem from="1613683633148" duration="8502000" />
-      <workItem from="1613849068931" duration="8094000" />
-      <workItem from="1613893322454" duration="4461000" />
-      <workItem from="1613917028118" duration="6930000" />
-      <workItem from="1614000853760" duration="14560000" />
-      <workItem from="1614133000195" duration="34000" />
-      <workItem from="1614436633740" duration="5018000" />
-      <workItem from="1614646522660" duration="8193000" />
-      <workItem from="1614713701109" duration="12534000" />
-      <workItem from="1614797843006" duration="15367000" />
-      <workItem from="1614883359643" duration="4646000" />
-      <workItem from="1614986424016" duration="9601000" />
-      <workItem from="1615014966113" duration="634000" />
-      <workItem from="1615154651791" duration="11233000" />
-      <workItem from="1615318981710" duration="611000" />
-      <workItem from="1615407611871" duration="1180000" />
-      <workItem from="1615490649665" duration="690000" />
-      <workItem from="1615587827598" duration="9461000" />
-      <workItem from="1615661411126" duration="1844000" />
-      <workItem from="1615695473183" duration="3405000" />
-      <workItem from="1615750281200" duration="7285000" />
-      <workItem from="1615780322226" duration="4908000" />
-      <workItem from="1615839268701" duration="9795000" />
-      <workItem from="1616012626166" duration="37000" />
-      <workItem from="1616436429813" duration="5360000" />
-      <workItem from="1616565911979" duration="823000" />
-      <workItem from="1616714904318" duration="6639000" />
-      <workItem from="1617045462053" duration="4468000" />
-      <workItem from="1617175933919" duration="1773000" />
-      <workItem from="1617873151698" duration="100000" />
-      <workItem from="1618405632569" duration="815000" />
-      <workItem from="1618406561154" duration="654000" />
-      <workItem from="1618743816686" duration="2680000" />
-      <workItem from="1619871525491" duration="19292000" />
-      <workItem from="1619950238855" duration="13838000" />
-      <workItem from="1620020988392" duration="7949000" />
-      <workItem from="1620052291259" duration="1502000" />
-      <workItem from="1620144330926" duration="463000" />
-      <workItem from="1620895132040" duration="828000" />
-      <workItem from="1621364957049" duration="9280000" />
-      <workItem from="1621402422651" duration="1208000" />
-      <workItem from="1621510929556" duration="8149000" />
-      <workItem from="1621692117706" duration="5344000" />
-      <workItem from="1621844484123" duration="24155000" />
-      <workItem from="1622025728977" duration="2531000" />
-      <workItem from="1622374521469" duration="1718000" />
-      <workItem from="1622595833352" duration="516000" />
-      <workItem from="1622849849682" duration="55000" />
-      <workItem from="1625175375178" duration="6305000" />
-      <workItem from="1625261760146" duration="6634000" />
+      <updated>1646269580716</updated>
+      <workItem from="1646269584372" duration="10111000" />
+      <workItem from="1646319547439" duration="6605000" />
+      <workItem from="1646338723913" duration="1718000" />
+      <workItem from="1646350124314" duration="36055000" />
+      <workItem from="1646444461360" duration="803000" />
+      <workItem from="1646861513444" duration="24000" />
+      <workItem from="1647461817099" duration="3429000" />
+      <workItem from="1647511486599" duration="3176000" />
+      <workItem from="1647539284989" duration="5737000" />
+      <workItem from="1647625417387" duration="1772000" />
+      <workItem from="1647627221344" duration="10000" />
+      <workItem from="1647856958092" duration="1496000" />
+      <workItem from="1648408163625" duration="4819000" />
+      <workItem from="1648634826509" duration="230000" />
+      <workItem from="1648666142963" duration="687000" />
+      <workItem from="1650110386781" duration="1572000" />
+      <workItem from="1650282622386" duration="11109000" />
+      <workItem from="1650301026681" duration="2932000" />
+      <workItem from="1650457564581" duration="7998000" />
+      <workItem from="1650466565649" duration="14000" />
+      <workItem from="1652747213308" duration="601000" />
+      <workItem from="1652942053188" duration="13000" />
+      <workItem from="1655305623451" duration="712000" />
+      <workItem from="1655374055233" duration="12184000" />
+      <workItem from="1658474388652" duration="19000" />
     </task>
     <servers />
   </component>
@@ -236,188 +188,29 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="601" y="267" key="#Notifications" timestamp="1614802030727">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="663" y="281" key="#ESLint" timestamp="1655384056047">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="601" y="267" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1614802030727" />
-    <state x="435" y="74" key="FileChooserDialogImpl" timestamp="1622849904043">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="663" y="281" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1655384056047" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1655384040729">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="435" y="74" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1622849904043" />
-    <state width="1345" height="179" key="GridCell.Tab.0.bottom" timestamp="1614657739566">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1655384040729" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1655384042672">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1614657739566" />
-    <state width="1345" height="179" key="GridCell.Tab.0.center" timestamp="1614657739566">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1655384042672" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1655378285301">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1614657739566" />
-    <state width="1345" height="179" key="GridCell.Tab.0.left" timestamp="1614657739566">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1655378285301" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1650291030783">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1614657739566" />
-    <state width="1345" height="179" key="GridCell.Tab.0.right" timestamp="1614657739566">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1650291030783" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1647461990032">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1614657739566" />
-    <state x="328" y="17" key="SettingsEditor" timestamp="1615697801602">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="328" y="17" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1615697801602" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1621900525104">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1621900525104" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/ReservationDetail.vue</url>
-          <line>143</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/ReservationDetail.vue</url>
-          <line>153</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/ReservationDetail.vue</url>
-          <line>156</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1073</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1061</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1045</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1024</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1011</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>968</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>964</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>934</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1116</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/hotels/update.vue</url>
-          <line>293</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/hotels/update.vue</url>
-          <line>276</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/users/create.vue</url>
-          <line>65</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/layouts/MainLayout.vue</url>
-          <line>1</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/layouts/MainLayout.vue</url>
-          <line>11</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/hotels/index.vue</url>
-          <line>153</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/prices/index.vue</url>
-          <line>153</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/prices/index.vue</url>
-          <line>150</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/prices/index.vue</url>
-          <line>310</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1050</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1064</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1078</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>1108</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/update.vue</url>
-          <line>517</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/cars/index.vue</url>
-          <line>8</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/create_new.vue</url>
-          <line>458</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/pages/reservation/create_new.vue</url>
-          <line>398</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1647461990032" />
   </component>
 </project>

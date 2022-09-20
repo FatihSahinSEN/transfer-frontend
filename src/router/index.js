@@ -1,25 +1,37 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueCryptojs from 'vue-cryptojs'
-import adminRoutes from './admin-routes'
+import route from './routes'
 
-Vue.use(VueCryptojs)
-let routes;
+let routes
 
-routes = adminRoutes;
+routes = route
 Vue.use(VueRouter)
-export default function (/* { store, ssrContext } */) {
 
+export default function ({ store, ssrContext }) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
-
-    // Leave these as they are and change in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE,
-    base: process.env.VUE_ROUTER_BASE
+    base: process.env.VUE_ROUTER_BASE,
   })
-
+  Router.beforeEach(async (to, from, next) => {
+    let roles = (await store.state.AuthService.Roles) || []
+    let Service = to?.meta?.service || null
+    store.commit('SetService', Service)
+    let urlRole = await to.meta.role
+    let roleStatus = false
+    if (roles.hasOwnProperty(urlRole)) {
+      if (roles[urlRole].role_status == '1') {
+        roleStatus = true
+      } else {
+        roleStatus = false
+      }
+    } else {
+      roleStatus = false
+    }
+    if (!store.state.isAuthenticated && to.name !== 'login') next({ name: 'login' })
+    else if (!roleStatus && to.name !== 'login') next({ name: 'login' })
+    else next()
+  })
   return Router
 }

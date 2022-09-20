@@ -1,69 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=productName%></title>
-
+    <title><%= process.env.TITLE %></title>
     <meta charset="utf-8" />
-    <meta name="description" content="<%= productDescription %>" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="description" content="<%= process.env.DESCRIPTION %>" />
+    <meta property="og:url" content="<%= process.env.DOMAIN %>">
+    <meta property="og:type" content="PWA">
+    <meta property="og:title" content="<%= process.env.TITLE %>">
+    <meta property="og:description" content="<%= process.env.DESCRIPTION %>">
+    <meta property="og:image" content="<%= process.env.OGIMAGE %>" />
+    <meta property="og:site_name" content="<%= process.env.SHORT_NAME %>">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Mobile web app title">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta
       name="viewport"
       content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>"
     />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="apple-touch-icon" sizes="96x96" href="icon/favicon-96x96.png" />
-    <link
-      rel="apple-touch-icon"
-      sizes="128x128"
-      href="icon/favicon-128x128.png"
-    />
-    <link rel="apple-touch-icon" href="icon/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-startup-image" href="icon/splash-startup.png" />
-    <link href="assets/linkstyles.css" rel="stylesheet">
-    <link rel="manifest" href="/manifest.json">
+    <meta name="format-detection" content="telephone=no">
     <meta name="HandheldFriendly" content="true" />
     <meta name="MobileOptimized" content="width" />
     <meta name="google" content="notranslate" />
-    <meta http-equiv="cache-control" content="max-age=0" />
-    <meta http-equiv="cache-control" content="no-store" />
-    <meta http-equiv="expires" content="-1" />
-    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="128x128"
-      href="icon/favicon-128x128.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="icon/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="icon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="icon/favicon-16x16.png"
-    />
-    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="57x57" href="<%= process.env.APPLE_TOUCH_57x57 %>">
+    <link rel="apple-touch-icon" sizes="60x60" href="<%= process.env.APPLE_TOUCH_60x60 %>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= process.env.APPLE_TOUCH_72x72 %>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= process.env.APPLE_TOUCH_76x76 %>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= process.env.APPLE_TOUCH_114x114 %>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= process.env.APPLE_TOUCH_120x120 %>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= process.env.APPLE_TOUCH_144x144 %>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= process.env.APPLE_TOUCH_152x152 %>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= process.env.APPLE_TOUCH_180x180 %>">
+    <link rel="icon" type="image/png" sizes="192x192" href="<%= process.env.ANDROID_192x192 %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= process.env.ANDROID_32x32 %>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= process.env.ANDROID_96x96 %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= process.env.ANDROID_16x16 %>">
+    <meta name="msapplication-TileImage" content="/icon-144x144.png">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link rel="icon" type="image/ico" href="<%= process.env.FAVICON %>" />
+    <meta name="msapplication-TileColor" content="#fff">
+    <meta name="theme-color" content="#fff">
+    <link href="<%= process.env.APPLE_STARTUP_1536x2008 %>" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_1496x2048 %>" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_768x1004 %>" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: portrait)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_748x1024 %>" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) and (orientation: landscape)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_1242x2148 %>" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_1182x2208 %>" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_750x1294 %>" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_640x1096 %>" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_640x920 %>" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="<%= process.env.APPLE_STARTUP_320x460 %>" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
   </head>
   <body>
-    <!-- DO NOT touch the following DIV -->
     <div id="q-app"></div>
   </body>
 </html>

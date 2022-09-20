@@ -175,7 +175,7 @@ export default {
         return false
       }
       this.$q.loading.show()
-      this.$axios.get('regions/list')
+      this.$axios.get('area/list')
         .then((result) => {
           this.$q.loading.hide()
           result.data.return.map(x => this.areas.push(x))

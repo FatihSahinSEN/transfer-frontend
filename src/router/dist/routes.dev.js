@@ -153,7 +153,7 @@ var routes = [{
     }
   }]
 }, {
-  path: "/regions",
+  path: "/area",
   component: function component() {
     return Promise.resolve().then(function () {
       return _interopRequireWildcard(require("layouts/MainLayout.vue"));
@@ -164,7 +164,7 @@ var routes = [{
     name: "regionList",
     component: function component() {
       return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require("pages/regions/index.vue"));
+        return _interopRequireWildcard(require("pages/area/index.vue"));
       });
     }
   }, {
@@ -172,7 +172,7 @@ var routes = [{
     name: "regionCreate",
     component: function component() {
       return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require("pages/regions/create.vue"));
+        return _interopRequireWildcard(require("pages/area/create.vue"));
       });
     }
   }, {
@@ -180,7 +180,7 @@ var routes = [{
     name: "regionUpdate",
     component: function component() {
       return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require("pages/regions/update.vue"));
+        return _interopRequireWildcard(require("pages/area/update.vue"));
       });
     }
   }]

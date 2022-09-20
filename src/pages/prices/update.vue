@@ -171,7 +171,7 @@ export default {
       let from_ver;
       let to_ver;
 
-      this.$axios.get('regions/list')
+      this.$axios.get('area/list')
         .then((result) => {
           this.$q.loading.hide()
           result.data.return.map(x => this.areas.push(x))

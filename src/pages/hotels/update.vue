@@ -275,9 +275,6 @@ export default {
 
 
     getUsers () {
-      if(this.CheckRole('HotelUpdate')==false){
-        return false
-      }
       this.$axios
         .get("users/hotel/list")
         .then(result => {
@@ -292,32 +289,30 @@ export default {
         });
     },
     getHotels () {
-      if(this.CheckRole('HotelUpdate')==false){
-        return false
-      }
       let id = this.$route.params.id
-      let url = 'hotels/get/' + id
-      this.$axios
-        .get(url)
-        .then(result => {
-          this.getUsers();
-          this.columns[0].data = result.data.return.hotel_name
-          this.user.selected = result.data.return.hotel_user.username
-          this.columns[1].data = result.data.return.hotel_phone
-          this.columns[2].data = result.data.return.hotel_phone2
-          this.columns[3].data = result.data.return.hotel_phone3
-          this.columns[4].data = result.data.return.hotel_email
-          this.columns[5].data = result.data.return.hotel_address
-          this.area.selected = result.data.return.hotel_area.area_name
-          this.columns[6].data = result.data.return.hotel_vkn
-          this.columns[7].data = result.data.return.hotel_vkd
-          this.columns[8].data = result.data.return.discount
-          this.hotel_status = result.data.return.hotel_status
-        })
-        .catch(err => {
-          this.$q.loading.hide();
-          this.alert("HATA", err);
-        });
+      this.$store.dispatch('HotelService/getDataById', id)
+      // let url = 'hotels/' + id
+      // this.$axios
+      //   .get(url)
+      //   .then(result => {
+      //     this.getUsers();
+      //     this.columns[0].data = result.data.return.hotel_name
+      //     this.user.selected = result.data.return.hotel_user.username
+      //     this.columns[1].data = result.data.return.hotel_phone
+      //     this.columns[2].data = result.data.return.hotel_phone2
+      //     this.columns[3].data = result.data.return.hotel_phone3
+      //     this.columns[4].data = result.data.return.hotel_email
+      //     this.columns[5].data = result.data.return.hotel_address
+      //     this.area.selected = result.data.return.hotel_area.area_name
+      //     this.columns[6].data = result.data.return.hotel_vkn
+      //     this.columns[7].data = result.data.return.hotel_vkd
+      //     this.columns[8].data = result.data.return.discount
+      //     this.hotel_status = result.data.return.hotel_status
+      //   })
+      //   .catch(err => {
+      //     this.$q.loading.hide();
+      //     this.alert("HATA", err);
+      //   });
     },
 
     filterFn (val, update) {

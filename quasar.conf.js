@@ -5,9 +5,10 @@
 
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
-const fs = require('fs')
+
 module.exports = function (  ctx  ) {
   return {
+    transpileDependencies: ['vuex-persist'],
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
 
@@ -38,24 +39,6 @@ module.exports = function (  ctx  ) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      env: {
-        TITLE: ctx.dev
-            ? "Turizm Hosting - Transfer Yönetim Sistemi"
-            : "Go By VIP - Transfer Yönetimi",
-        SHORT_NAME: ctx.dev
-            ? "Turizm Hosting"
-            : "GoByVIP",
-        DESCRIPTION: ctx.dev
-            ? "Turizm Hosting - Transfer Yönetim Sistemi"
-            : "Go By VIP - Airport Transfer",
-        DOMAIN: ctx.dev
-              ? "https://fatih.dev"
-              : "https://www.gobyvip.com",
-        API: ctx.dev
-          ? "https://fatih.dev/backend/v1/"
-          : "https://www.gobyvip.com/api/v1/",
-
-      },
       vueRouterMode: "history", // available values: 'hash', 'history'
 
       // transpile: false,
@@ -80,13 +63,8 @@ module.exports = function (  ctx  ) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
-      host:'fatih.dev',
-      https: {
-        key: fs.readFileSync('cert/server.key'),
-        cert: fs.readFileSync('cert/server.crt'),
-        ca: fs.readFileSync('cert/server.pem'),
-      },
-      port: 8001,
+      host: 'localhost',
+      port: 7485,
       open: true // opens browser window automatically,
     },
 
@@ -129,35 +107,35 @@ module.exports = function (  ctx  ) {
         clientsClaim: true
       }, // only for GenerateSW
       manifest: {
-        name: `vipvantransfer - Yönetim Sistemi`,
-        short_name: `vipvantransfer`,
-        description: `Transfer Yönetim Sistemi`,
+        name: process.env.TITLE,
+        short_name: process.env.SHORT_NAME,
+        description: process.env.DESCRIPTION,
         display: "standalone",
         orientation: "portrait",
         background_color: "#133d67",
         theme_color: "#133d67",
         icons: [{
-            src: "icon/icon-128x128.png",
+            src: process.env.ANDROID_128x128,
             sizes: "128x128",
             type: "image/png"
           },
           {
-            src: "icon/icon-192x192.png",
+            src: process.env.ANDROID_192x192,
             sizes: "192x192",
             type: "image/png"
           },
           {
-            src: "icon/icon-256x256.png",
+            src: process.env.ANDROID_256x256,
             sizes: "256x256",
             type: "image/png"
           },
           {
-            src: "icon/icon-384x384.png",
+            src: process.env.ANDROID_384x384,
             sizes: "384x384",
             type: "image/png"
           },
           {
-            src: "icon/icon-512x512.png",
+            src: process.env.ANDROID_512x512,
             sizes: "512x512",
             type: "image/png"
           }

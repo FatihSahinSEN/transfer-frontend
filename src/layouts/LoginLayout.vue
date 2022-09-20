@@ -3,7 +3,7 @@
     <q-page-container>
       <router-view  />
     </q-page-container>
-    <install-app />
+    <install-app v-if="DevMode" />
   </q-layout>
  </template>
 
@@ -18,6 +18,17 @@ export default {
       email: '',
       username: '',
       password: ''
+    }
+  },
+  methods: {
+
+  },
+  computed: {
+    DevMode() {
+      if (process.env.DEV){
+        return false
+      }
+      return true
     }
   }
 }

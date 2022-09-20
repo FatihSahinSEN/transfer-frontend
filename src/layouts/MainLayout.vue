@@ -2,13 +2,9 @@
 <script>
   import EssentialLink from "components/EssentialLink.vue";
   import MenuDropdown from "components/MenuDropdown.vue";
-  import JwtDecode from "vue-jwt-decode"
   import MobilMenu from "components/MobileMenu";
   import {mapState} from "vuex";
 
-  if (!sessionStorage.hasOwnProperty('x79wAdsc5848!52asd6plk2^a&acs33649')) {
-    window.location = "/login"
-  }
   const adminLink = [
 
     {
@@ -72,7 +68,7 @@
       title: "Bölgeler",
       caption: "Bölge Yönetimi",
       icon: "map",
-      link: "/regions",
+      link: "/area",
       dropdown: true,
       role: "AreaList"
     },
@@ -94,14 +90,14 @@
       dropdown: true,
       role: "PhoneBookList"
     },
-    // {
-    //   title: "Kasa",
-    //   caption: "Gelirler giderler",
-    //   icon: "attach_money",
-    //   link: "/kasa",
-    //   dropdown: true,
-    //   role: "PhoneBookList"
-    // },
+    {
+      title: "Kasa",
+      caption: "Gelirler giderler",
+      icon: "attach_money",
+      link: "/kasa",
+      dropdown: true,
+      role: "KasaList"
+    },
     {
       title: "Telefon Defteri",
       caption: "Telefon Defteri",
@@ -125,10 +121,10 @@
     components: {MobilMenu, EssentialLink,MenuDropdown },
     data () {
       return {
+        fullname: "Fatih ŞEN",
+        role:0,
         leftDrawerOpen: false,
-        essentialLinks: null,
-        fullname: this.CryptoJS.AES.decrypt(sessionStorage.getItem("cVs984vasd5481!daw^sa&54511akghH!w"),"Fatihhh").toString(this.CryptoJS.enc.Utf8),
-        role: this.CryptoJS.AES.decrypt(sessionStorage.getItem("Klamskwjn123LSkl2^a!awds++123dawd1"),"Fatihhh").toString(this.CryptoJS.enc.Utf8),
+        essentialLinks: adminLink,
         tab: "",
         width: 0,
         user_id: null,
@@ -152,7 +148,7 @@
           backgroundColor: '#027be3',
           width: '9px',
           opacity: 0.2
-        }
+        },
 
       };
     },
@@ -160,29 +156,35 @@
       OpenWebSite(){
         window.open('https://turizmhosting.com', '_blank');
       },
-      setRole(){
-        this.essentialLinks=adminLink;
-      }
+      ShowLinks(role,dropdown){
+        if(this.roles[role].role_status=="1"){
+          if(!dropdown){
+            return true
+          }else{
+            return false
+          }
+        }
+        return false
+      },
     },
     computed: {
       ...mapState(["parameters"]),
       whatsappAPI() { return "https://wa.me/" + this.$store.state.parameters.SYSTEM_CONTACT_WHATSAPP + "?text=Merhabalar" },
       phoneLink() { return "tel:+" + this.$store.state.parameters.SYSTEM_CONTACT_PHONE },
       emailLink() { return "mailto:" + this.$store.state.parameters.SYSTEM_CONTACT_MAIL },
+      roles(){
+        return this.$store.state.AuthService.Roles;
+      },
+
       widthData() {
         return "width:" + this.windowWidth + "px";
       }
     },
     mounted() {
-      this.setRole()
       window.addEventListener('resize', () => {
         this.windowWidth = (window.innerWidth - 35)
       })
     },
-    beforeMount() {
-      this.CheckToken()
-      this.getParameters()
-    }
   };
 </script>
 <template>
@@ -191,7 +193,7 @@
       <q-header elevated>
         <q-toolbar class="shadow-1">
           <q-tabs inline-label  outside-arrows mobile-arrows v-model="tab" class="MobileMenu" :style="widthData">
-            <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" v-if="link.dropdown==false" />
+            <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" v-if="ShowLinks(link.role,link.dropdown)" />
             <q-btn-dropdown auto-close stretch flat icon="more" label="Yönetim Menü" v-if="role==0" >
               <q-scroll-area
                 :thumb-style="thumbStyle"
@@ -199,7 +201,7 @@
                 style="height: 55vh;"
               >
               <q-list>
-                <MenuDropdown v-for="link in essentialLinks" :key="link.title" v-bind="link" v-if="link.dropdown==true" />
+                <MenuDropdown v-for="link in essentialLinks" :key="link.title" v-bind="link" v-if="ShowLinks(link.role,!link.dropdown)" />
               </q-list>
               </q-scroll-area>
             </q-btn-dropdown>

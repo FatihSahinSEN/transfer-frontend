@@ -127,7 +127,7 @@ export default {
           this.alert("Uyarı", "Lütfen tüm alanları doğru doldurunuz.");
         } else {
           let id = this.$route.params.id
-          let url = 'regions/update/' + id
+          let url = 'area/update/' + id
           this.$axios.post(url, { region_detail })
             .then((result) => {
               this.$q.loading.hide()
@@ -162,7 +162,7 @@ export default {
         return false
       }
       let id = this.$route.params.id
-      let url = 'regions/get/' + id
+      let url = 'area/get/' + id
       this.$axios.get(url)
         .then((result) => {
           this.$q.loading.hide()

@@ -1134,7 +1134,7 @@
         if(this.CheckRole('ReservationCreate')==false || this.step!=2){
           return false
         }
-        let url = "/regions/reservation/" + this.transfer_direction_model.id
+        let url = "/area/reservation/" + this.transfer_direction_model.id
         this.$axios.get(url).then((response => {
           this.nereden = response.data.return.nereden
           this.nereye = response.data.return.nereye

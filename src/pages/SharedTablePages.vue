@@ -1,12 +1,12 @@
 <template>
-  <Table Service="HotelService"/>
+  <Table></Table>
 </template>
 
 <script>
   import Table from "components/table/Table";
 
   export default {
-    name: 'hotels',
+    name: 'SharedTablePages',
     components: {Table},
   }
 </script>

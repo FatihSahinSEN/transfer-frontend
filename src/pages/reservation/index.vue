@@ -1,5 +1,5 @@
 <template>
-  <div class="arka" v-if="CheckRole('ReservationList')" :style="ArkaPlan">
+  <div class="arka" :style="ArkaPlan">
     <div class="q-pa-md row items-start q-gutter-md">
       <div class="text-h6 fit">Rezervasyonlar
           <q-icon name="fact_check" class="text-primary" style="font-size: 2em;">
@@ -49,13 +49,9 @@
         <q-table
           title=""
           dense
-          :data="rezervasyon"
+          :data="ReservationList"
           :columns="columns"
-          :pagination.sync="pagens"
-          :filter="filter"
-          :filter-method="filtod"
           row-key="id"
-          :loading="loading"
           no-data-label="Liste boş."
           no-results-label="Arama sonucu bulunamadı.."
           :grid="grid"
@@ -72,59 +68,32 @@
               <q-td key="id" :props="props" v-else>
                 #{{ props.row.id }}
               </q-td>
-              <q-td key="hotel_name" :props="props" v-if="width<1599">
-                <b>{{ props.row.hotel_name.substr(0,15) }}</b>
-              </q-td>
-              <q-td key="hotel_name" :props="props" v-else>
+              <q-td key="hotel_name" :props="props">
                 <b>{{ props.row.hotel_name }}</b>
               </q-td>
-              <q-td key="transfer_status_text" :props="props" v-if="props.row.transfer_status=='1'">
-                <q-badge style="background-color:#1976D2;color:#fff">
-                  {{ props.row.transfer_status_text }}
-                </q-badge>
-              </q-td>
-              <q-td key="transfer_status_text" :props="props" v-else-if="props.row.transfer_status=='2'">
-                <q-badge style="background-color:#F2FD02;color:#000">
-                  {{ props.row.transfer_status_text }}
-                </q-badge>
-              </q-td>
-              <q-td key="transfer_status_text" :props="props" v-else-if="props.row.transfer_status==='3'">
-                <q-badge style="background-color:#4DF718;color:#000">
-                  Yapıldı
-                </q-badge>
-              </q-td>
-              <q-td key="transfer_status_text" :props="props" v-else-if="props.row.transfer_status=='4' ||props.row.transfer_status=='5'">
-                <q-badge style="background-color:#FF0000;color:#fff">
-                  {{ props.row.transfer_status_text }}
-                </q-badge>
-
-              </q-td>
-
-              <q-td key="transfer_status_text" :props="props" v-else-if="props.row.transfer_status==='6'">
-                <q-badge style="background-color:#b477d2;color:#fff">
-                  {{ props.row.transfer_status_text }}
+              <q-td key="transfer_status_text" :props="props">
+                <q-badge :style="ReturnStatus(props.row.transfer_status).color">
+                  {{ ReturnStatus(props.row.transfer_status).text }}
                 </q-badge>
               </q-td>
               <q-td key="departure_date" :props="props">
-                {{ props.row.tarih }}
+                {{ props.row.departure_date }}
               </q-td>
               <q-td key="flight_or_room" :props="props">
-                {{ props.row.flight_or_room.substr(0,6) }}
+                {{ props.row.flight_or_room }}
               </q-td>
               <q-td key="transfer_type_text" :props="props">
-                {{ props.row.transfer_type_text }}
+                {{ props.row.transfer_type }}
               </q-td>
               <q-td key="departure_area_name" :props="props">
-                <q-tooltip v-if="width<1599">{{ props.row.departure_area_name }}</q-tooltip>
                 {{ TableSubstr(props.row.departure_area_name) }}
               </q-td>
               <q-td key="arrival_area_name" :props="props">
-                <q-tooltip v-if="width<1599">{{ props.row.arrival_area_name }}</q-tooltip>
                 {{ TableSubstr(props.row.arrival_area_name) }}
               </q-td>
               <q-td key="passengers_name" :props="props">
                 <q-tooltip v-if="width<1599">{{ props.row.passengers_name }}</q-tooltip>
-                {{ TableSubstr(PassengerSplit(props.row.passengers_name)) }}
+                {{ props.row.passengers_name }}
               </q-td>
               <q-td key="passenger_size" :props="props">
                 {{ props.row.passenger_size }}
@@ -136,13 +105,10 @@
                 {{ props.row.plaka }}
               </q-td>
               <q-td key="driver_name" :props="props">
-                {{ DriverSplit(props.row.driver_name) }}
+                {{ props.row.driver_name }}
               </q-td>
-              <q-td key="ucret" :props="props" v-if="CheckRole('ReservationPrice')">
-                {{ props.row.ucret }}
-              </q-td>
-              <q-td key="ucret" :props="props" v-else>
-                -
+              <q-td key="ucret" :props="props">
+                {{ props.row.price }}
               </q-td>
             </q-tr>
           </template>
@@ -169,17 +135,12 @@
           />
         </q-dialog>
       </div>
-        </q-card-section>
-      </q-card>
     </div>
     <div class="fit">
 
     </div>
   </div>
 
-  <div class="q-pa-md row items-start q-gutter-md" v-else>
-    <h6 class="text-center"> Transfer Yönetim Sistemine hoşgeldiniz.</h6>
-  </div>
 </template>
 
 <script>
@@ -285,6 +246,34 @@
       }
     },
     methods: {
+      ReturnStatus(status){
+        let color,text;
+        if(status=='1'){
+          color = 'background-color:#1976D2;color:#fff';
+          text = 'Onaylandı';
+        }
+        if(status=='2'){
+          color = 'background-color:#F2FD02;color:#000';
+          text = 'Beklemede';
+        }
+        if(status=='3'){
+          color = 'background-color:#F2FD02;color:#000';
+          text = 'Gerçekleşti/Yapıldı';
+        }
+        if(status=='6'){
+          color =  'background-color:#b477d2;color:#fff';
+          text = 'No Show';
+        }
+        if(status=='4' || status == '5'){
+          color =  'background-color:#FF0000;color:#fff';
+          text = 'İptal';
+        }
+        let Return = {
+          color: color,
+          text: text,
+        };
+        return Return;
+      },
         CloseNotice(row){
           var search=this.notices.find(notice => notice.id == row.id)
           this.notices.splice(search,1)
@@ -380,36 +369,36 @@
           message: 'Rezervasyonlar güncelleniyor....',
           timeout: 3000
         })
-        this.$axios.post("/list", {filter})
-          .then((result) => {
-            if(result.data.return.rezervasyon.length>0){
-              Object.entries(result.data.return.rezervasyon).forEach(entry => {
-                const [key, value] = entry;
-                if (key != "status") {
-                  this.rezervasyon.push(value)
-                  var title=value.departure_area_name + " > " + value.arrival_area_name
-                  var caption=value.hotel_name + " : #" + value.id
-                  this.$q.notify({
-                    position:"top-right",
-                    icon: 'airport_shuttle',
-                    color: 'green-7',
-                    message: title,
-                    caption: caption,
-                    timeout: 5000
-                  })
-                }
-              });
-              var lastInsert = this.rezervasyon[this.rezervasyon.length - 1].created
-              this.$store.commit("setReservationLastUpdate", lastInsert)
-              this.$store.commit("setReservationList", this.rezervasyon)
-              this.playSound()
-
-
-            }
-            this.refresh=true
-          }).catch((err) => {
-          this.refresh=true
-        });
+        // this.$axios.post("/list", {filter})
+        //   .then((result) => {
+        //     if(result.data.return.rezervasyon.length>0){
+        //       Object.entries(result.data.return.rezervasyon).forEach(entry => {
+        //         const [key, value] = entry;
+        //         if (key != "status") {
+        //           this.rezervasyon.push(value)
+        //           var title=value.departure_area_name + " > " + value.arrival_area_name
+        //           var caption=value.hotel_name + " : #" + value.id
+        //           this.$q.notify({
+        //             position:"top-right",
+        //             icon: 'airport_shuttle',
+        //             color: 'green-7',
+        //             message: title,
+        //             caption: caption,
+        //             timeout: 5000
+        //           })
+        //         }
+        //       });
+        //       var lastInsert = this.rezervasyon[this.rezervasyon.length - 1].created
+        //       this.$store.commit("setReservationLastUpdate", lastInsert)
+        //       this.$store.commit("setReservationList", this.rezervasyon)
+        //       this.playSound()
+        //
+        //
+        //     }
+        //     this.refresh=true
+        //   }).catch((err) => {
+        //   this.refresh=true
+        // });
       },
       CheckReservationStatusTimer(){
         if(!this.$store.state.StatusRefresh) {
@@ -429,27 +418,27 @@
         } else {
           filter.ListType = 2
         }
-        this.$axios.post("/status", {filter})
-          .then((result) => {
-            var vv=this.rezervasyon
-            if(result.data.return.rezervasyon.length>0){
-              Object.entries(result.data.return.rezervasyon).forEach(entry => {
-                const [key, value] = entry;
-                if (key != "status") {
-                  var ff = vv.findIndex(item => {
-                    if(item.id == value.id) {
-                      return value
-                    }
-                  })
-                  vv.splice(ff,1)
-                  vv.splice(ff,0,value)
-                }
-              });
-              this.$store.commit("setReservationList", vv)
-            }
-          }).catch((err) => {
-            console.log(err)
-        });
+        // this.$axios.post("/status", {filter})
+        //   .then((result) => {
+        //     var vv=this.rezervasyon
+        //     if(result.data.return.rezervasyon.length>0){
+        //       Object.entries(result.data.return.rezervasyon).forEach(entry => {
+        //         const [key, value] = entry;
+        //         if (key != "status") {
+        //           var ff = vv.findIndex(item => {
+        //             if(item.id == value.id) {
+        //               return value
+        //             }
+        //           })
+        //           vv.splice(ff,1)
+        //           vv.splice(ff,0,value)
+        //         }
+        //       });
+        //       this.$store.commit("setReservationList", vv)
+        //     }
+        //   }).catch((err) => {
+        //     console.log(err)
+        // });
       },
       MinToMls( minutes ) {
         var saniye = parseInt( minutes * 60 ); // Saniye buluyoruz.
@@ -522,35 +511,35 @@
           } else {
             filter.ListType = 2
           }
-          this.$axios.post('reservation/list', {filter})
-            .then((result) => {
-              this.drivers = []
-              this.rezervasyon = []
-              Object.entries(result.data.return.rezervasyon).forEach(entry => {
-                const [key, value] = entry;
-                if (key != "status") {
-                  this.rezervasyon.push(value)
-                }
-              });
-
-              Object.entries(result.data.return.drivers).forEach(entry => {
-                const [key, value] = entry;
-                if (key != "status") {
-                  this.drivers.push(value)
-                }
-              });
-              this.FilterDate=result.data.return.FilterDate
-
-              var lastInsert=this.rezervasyon[this.rezervasyon.length-1].created
-              this.$store.commit("setReservationLastUpdate",lastInsert)
-              this.$store.commit("setFilterDate", this.FilterDate)
-              this.$store.commit("setReservationList", this.rezervasyon)
-              this.$store.commit("setDrivers", this.drivers)
-              this.$q.loading.hide()
-            }).catch((err) => {
-            this.data = err.data;
-            this.$q.loading.hide()
-          });
+          // this.$axios.post('reservation/list', {filter})
+          //   .then((result) => {
+          //     this.drivers = []
+          //     this.rezervasyon = []
+          //     Object.entries(result.data.return.rezervasyon).forEach(entry => {
+          //       const [key, value] = entry;
+          //       if (key != "status") {
+          //         this.rezervasyon.push(value)
+          //       }
+          //     });
+          //
+          //     Object.entries(result.data.return.drivers).forEach(entry => {
+          //       const [key, value] = entry;
+          //       if (key != "status") {
+          //         this.drivers.push(value)
+          //       }
+          //     });
+          //     this.FilterDate=result.data.return.FilterDate
+          //
+          //     var lastInsert=this.rezervasyon[this.rezervasyon.length-1].created
+          //     this.$store.commit("setReservationLastUpdate",lastInsert)
+          //     this.$store.commit("setFilterDate", this.FilterDate)
+          //     this.$store.commit("setReservationList", this.rezervasyon)
+          //     this.$store.commit("setDrivers", this.drivers)
+          //     this.$q.loading.hide()
+          //   }).catch((err) => {
+          //   this.data = err.data;
+          //   this.$q.loading.hide()
+          // });
 
       },
       ShowTransferStatus(durum){
@@ -585,21 +574,21 @@
       },
       getDataNotice(){
           if(this.notices===null){
-            this.$axios.get('/notice/list')
-            .then((res)=> {
-              this.notices=res.data.return
-            }).catch((e)=>{
-              console.log(e)
-            })
+            // this.$axios.get('/notice/list')
+            // .then((res)=> {
+            //   this.notices=res.data.return
+            // }).catch((e)=>{
+            //   console.log(e)
+            // })
           }
       },
     },
     computed: {
       ...mapGetters(['getReservationList']),
       ...mapState(['filter','grid','parameters']),
-      rezervasyons: {
+      ReservationList: {
         get() {
-          return this.$store.state.reservationList
+          return this.$store.state.Reservation.ReservationList;
         },
         set() {
           this.$store.commit('setReservationList', this.rezervasyon)
@@ -653,6 +642,7 @@
     mounted() {
       this.getDataAPI()
       this.getDataNotice()
+      this.$store.dispatch("Reservation/AllReservationUpdate");
     },
     created() {
       this.TimerControl()
